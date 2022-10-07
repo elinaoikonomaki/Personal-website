@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --secondary-color: #151226;
+  --contrast-color: #BF307F;
+}
+
+.landing_page {
+	height: 100vh;
+  /*This part is important for centering*/
+  display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 40px;
+	bottom: -1000px;
+	animation: fade 2s forwards;
+	animation-delay:3s;
+  opacity: 1;
+	
+}
+@keyframes fade {
+	from, to { margin-bottom: 60px;}
+}
+.landing_page >p {
+	font-family: 'Inconsolata', monospace;
+  font-size: 0.6em;
+	color: beige;
+}
+.background {
+  opacity: 0.5;
+}
+.background video {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+	z-index: -1;
+}
+.title {
+  overflow: hidden;
+  height: auto;
+  top: 150px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-family: 'Inconsolata', monospace;
+    color: black;
+    margin-bottom: 20px;
+    transform: translateY(100px);
+    animation: slideUp .8s ease forwards .5s;
+}
+.par {
+  width: 40%;
+  height: auto;
+  overflow: hidden;
+  font-size: 1.8rem;
+  font-family: 'Inconsolata', monospace;
+  text-align: justify;
+
+}
+
+p{
+  line-height: 28px;
+  transform: translateY(300px);
+  animation: slideUp .8s ease-in-out forwards .9s;
+}
+
+
+.wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper button {
+  margin: 20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  transform: translateY(100px);
+  outline: 4px solid black;
+  font-family: 'Inconsolata', monospace;
+  font-size: 18px;
+  animation: slideUp .8s ease forwards .5s;
+  animation-delay: 3s;
+  transition: color ;
+  background: transparent;
+  border: none;
+}
+
+.wrapper button:hover {
+  color: rgb(240, 238, 238);
+  background-color: #151226;
+  cursor:pointer;
+}
+
+@keyframes slideUp {
+  0%{
+    transform: translateY(300px);
+    
+  }
+  100%{
+    transform: translateY(0px);
+    
+  }
+}
+
+
