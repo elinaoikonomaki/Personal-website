@@ -79,11 +79,11 @@ p{
 }
 
 .wrapper button {
-  margin: 20px;
-  margin-bottom: 30px;
-  padding: 10px;
-  transform: translateY(100px);
-  outline: 4px solid black;
+  margin: 2rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  transform: translateY(2rem);
+  outline: 0.1rem solid black;
   font-family: 'Inconsolata', monospace;
   font-size: 18px;
   animation: slideUp .8s ease forwards .5s;
@@ -109,5 +109,32 @@ p{
     
   }
 }
-
-
+/* media queries if the screen is smaller than 600px apply the following code */
+@media screen and (max-width: 700px) {
+  p {
+    line-height: 1rem;
+    
+  }
+  .par {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    
+}
+.wrapper button {
+  margin: 1rem;
+  margin-bottom: 3rem;
+  padding: 0.5rem;
+  transform: translateY(6rem);
+  outline: 0.1rem solid black;
+  font-family: 'Inconsolata', monospace;
+  font-size: 1rem;
+  animation: slideUp .8s ease forwards .5s;
+  animation-delay: 1s;
+  transition: color ;
+  background: transparent;
+  border: none;
+}
+}
