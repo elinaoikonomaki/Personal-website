@@ -14,7 +14,7 @@ body {
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-	gap: 40px;
+	gap: 20px;
 	bottom: -1000px;
 	animation: fade 2s forwards;
 	animation-delay:3s;
@@ -48,10 +48,10 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 28px;
     font-family: 'Inconsolata', monospace;
     color: black;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     transform: translateY(100px);
     animation: slideUp .8s ease forwards .5s;
 }
@@ -59,14 +59,14 @@ h1 {
   width: 40%;
   height: auto;
   overflow: hidden;
-  font-size: 1.8rem;
+  font-size: 24px;
   font-family: 'Inconsolata', monospace;
   text-align: justify;
 
 }
 
 p{
-  line-height: 28px;
+  line-height: 20px;
   transform: translateY(300px);
   animation: slideUp .8s ease-in-out forwards .9s;
 }
@@ -82,12 +82,12 @@ p{
   margin: 2rem;
   margin-bottom: 3rem;
   padding: 1rem;
-  transform: translateY(2rem);
+  transform: translateY(10rem);
   outline: 0.1rem solid black;
   font-family: 'Inconsolata', monospace;
   font-size: 18px;
   animation: slideUp .8s ease forwards .5s;
-  animation-delay: 1s;
+  animation-delay: 2s;
   transition: color ;
   background: transparent;
   border: none;
@@ -127,7 +127,7 @@ p{
   margin: 1rem;
   margin-bottom: 3rem;
   padding: 0.5rem;
-  transform: translateY(6rem);
+  transform: translateY(10rem);
   outline: 0.1rem solid black;
   font-family: 'Inconsolata', monospace;
   font-size: 1rem;
