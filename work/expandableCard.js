@@ -126,7 +126,7 @@ const getCardContent = (title,videoUrl,imgUrl, paragraph, keywords, subtitle,yea
       </video>
      <div class= "wrapper"> 
         <div class="info ">
-          <p>  Year:  ${year}
+          
            Keywords: ${keywords} </p>
         </div>
         <div class="info dec">
