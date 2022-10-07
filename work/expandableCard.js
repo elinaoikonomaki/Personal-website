@@ -4,7 +4,7 @@ export function onCardClick(el,title,videoUrl, paragraph, keywords, subtitle,yea
   //get the clicked card
   const card = el;
   //clone the card
-  const cardClone = card.cloneNode(true);
+  const cardClone = card.cloneNode(false);
   //get the location of the card in the window
   var { top, left, width, height } = card.getBoundingClientRect();
   //positioning the clone on top of the original card

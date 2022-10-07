@@ -87,7 +87,7 @@ p{
   font-family: 'Inconsolata', monospace;
   font-size: 18px;
   animation: slideUp .8s ease forwards .5s;
-  animation-delay: 3s;
+  animation-delay: 1s;
   transition: color ;
   background: transparent;
   border: none;
