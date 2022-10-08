@@ -126,8 +126,7 @@ const getCardContent = (title,videoUrl,imgUrl, paragraph, keywords, subtitle,yea
       </video>
      <div class= "wrapper"> 
         <div class="info ">
-          
-           Keywords: ${keywords} </p>
+          <p> Keywords: ${keywords} </p>
         </div>
         <div class="info dec">
           <h3> Short Description </h3>
