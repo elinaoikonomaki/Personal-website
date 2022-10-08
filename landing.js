@@ -1,5 +1,5 @@
 let video = document.querySelector("video");
-video.playbackRate = 0.3;
+video.playbackRate = 1.0;
 
 
 
