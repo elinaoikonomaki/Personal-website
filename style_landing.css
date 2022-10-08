@@ -14,8 +14,10 @@ body {
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-	gap: 20px;
-	bottom: -1000px;
+  margin-top: 250px;
+  margin-bottom: 50px;
+	
+	/* bottom: -1000px; */
 	animation: fade 2s forwards;
 	animation-delay:3s;
   opacity: 1;
@@ -52,7 +54,7 @@ h1 {
     font-family: 'Inconsolata', monospace;
     color: black;
     margin-bottom: 5px;
-    transform: translateY(100px);
+    transform: translateY(150px);
     animation: slideUp .8s ease forwards .5s;
 }
 .par {
@@ -67,7 +69,7 @@ h1 {
 
 p{
   line-height: 24px;
-  transform: translateY(300px);
+  transform: translateY(500px);
   animation: slideUp .8s ease-in-out forwards .9s;
 }
 
@@ -82,7 +84,7 @@ p{
   margin: 2rem;
   margin-bottom: 3rem;
   padding: 1rem;
-  transform: translateY(10rem);
+  transform: translateY(15rem);
   outline: 0.1rem solid black;
   font-family: 'Inconsolata', monospace;
   font-size: 18px;
