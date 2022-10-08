@@ -68,7 +68,7 @@ h1 {
 }
 
 p{
-  line-height: 24px;
+  line-height: 28px;
   transform: translateY(500px);
   animation: slideUp .8s ease-in-out forwards .9s;
 }
@@ -84,7 +84,7 @@ p{
   margin: 2rem;
   margin-bottom: 3rem;
   padding: 1rem;
-  transform: translateY(25rem);
+  transform: translateY(800px);
   outline: 0.1rem solid black;
   font-family: 'Inconsolata', monospace;
   font-size: 18px;
