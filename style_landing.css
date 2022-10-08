@@ -14,8 +14,8 @@ body {
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-  margin-top: 250px;
-  margin-bottom: 50px;
+  margin-top: 9rem;
+  margin-bottom: 3rem;
 	
 	/* bottom: -1000px; */
 	animation: fade 2s forwards;
@@ -58,7 +58,7 @@ h1 {
     animation: slideUp .8s ease forwards .5s;
 }
 .par {
-  width: 40%;
+  width: 60%;
   height: auto;
   overflow: hidden;
   font-size: 24px;
