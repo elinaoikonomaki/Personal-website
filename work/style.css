@@ -136,7 +136,7 @@ a:hover {
 .filterbtn:hover {
   background-color: orangered;
   color:blue ;
-  outline: 0.15rem solid blue;
+  /* outline: 0.15rem solid blue; outline does not follow the shape of border-radius*/
 }
 
 /* Main div with projects display */
