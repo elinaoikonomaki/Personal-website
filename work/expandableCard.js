@@ -1,6 +1,8 @@
 import { createBtn } from "./selectors.js";
 
-export function onCardClick(el,title,videoUrl, paragraph, keywords, subtitle,year) {
+export function onCardClick(el,title,videoUrl, imgUrl, paragraph, keywords, subtitle, year) {
+  console.log(year)
+
   //get the clicked card
   const card = el;
   //clone the card
@@ -30,7 +32,7 @@ export function onCardClick(el,title,videoUrl, paragraph, keywords, subtitle,yea
     height: `${height}px`,
   });
   
-  const content = getCardContent(title,videoUrl, paragraph, keywords, subtitle,year);
+  const content = getCardContent(title, videoUrl, imgUrl, paragraph, keywords, subtitle, year);
   // set the display block so the content will follow the normal flow in case the original card is not display block
   cardClone.style.display = 'block';
   cardClone.style.padding = '0';
@@ -115,6 +117,7 @@ const fadeContent = (element, opacity, duration = 300) => {
 };
 
 const getCardContent = (title,videoUrl,imgUrl, paragraph, keywords, subtitle,year) => {
+ 
   return `
     <div class="card-content">
       <div class="header">
@@ -126,7 +129,10 @@ const getCardContent = (title,videoUrl,imgUrl, paragraph, keywords, subtitle,yea
       </video>
      <div class= "wrapper"> 
         <div class="info ">
-          <p> Keywords: ${keywords} </p>
+          <h3> Keywords </h3>
+          <p> ${keywords} </p>
+          <h3> Year </h3>
+          <p> ${year} </p>
         </div>
         <div class="info dec">
           <h3> Short Description </h3>

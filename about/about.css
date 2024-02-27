@@ -53,6 +53,12 @@ a:hover {
   grid-row-end: 2;
   justify-self: end;
   align-self: start;
+  
+}
+
+.item-4 > a {
+  color: blue;
+  text-decoration: underline;
 }
 
 
@@ -82,13 +88,13 @@ a:hover {
 
 .displaybar {
   display: inline-flex;
-  justify-content: center;
-  height: 10%;
-  width: 100%;
+  justify-content: left;
+  height: 5%;
+  width: 40%;
   border: 3px solid black;
   align-items: center;
   padding-left: 1%;
-  outline: outset medium;
+  /* outline: outset medium; */
 }
 .displaybar p{
  
@@ -162,8 +168,8 @@ li > strong {
   
   .item-1{ order: 1; font-size: 0.1rem; }
   .item-2 { order: 2; font-size: 0.1rem;}
-  .item-3{ order: 3; font-size: 0.1rem;}
-  .item-4 { order: 4; font-size: 0.1rem;}
+  .item-3{ order: 3; font-size: 0.1rem; }
+  .item-4 { order: 4; font-size: 0.1rem; }
   .windowView {height:100%; width:100%;flex-basis:auto;order: 5; justify-content: center;}
   .about{
     justify-content: center;

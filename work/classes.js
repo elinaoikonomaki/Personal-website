@@ -23,6 +23,7 @@ export class Card {
     card.setAttribute('id', `${this.id}`);
     card.dataset.fr = this.tags;
     card.dataset.pt = this.types;
+    card.dataset.year = this.year;
     this.createBackground(card);
     this.createTitle(card);
     this.mouseOver(card);

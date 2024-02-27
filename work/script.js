@@ -1,5 +1,5 @@
 
-import {divWindow, typeDiv, tagDiv, tagsArray, typesArray} from "./selectors.js";
+import {divWindow, typeDiv, tagDiv, yearDiv, tagsArray, typesArray, yearsArray} from "./selectors.js";
 import {Card,cards} from './classes.js'
 
 // FETCING THE DATA
@@ -28,6 +28,12 @@ const projects = fetch('../data.json')
           createBtn(ptype, typeDiv);
         }
       });
+
+      let year =  project.year;
+      if (yearsArray.includes(year) === false){
+        yearsArray.push(year);
+        createBtn(year, yearDiv);
+      }
     })
   );
 
@@ -58,9 +64,11 @@ function filterBtn(btn) {
     let tgSliced = divTg.split(',');
     let divPt = div.dataset.pt;
     let ptSliced = divPt.split(',');
+    let divYear = div.dataset.year;
+    let yearSliced = divYear.split(',');
     let divNode = document.getElementById(div.attributes['id'].nodeValue);
     //i should fix the case that you click again on the same button twice. --> see javascript btn
-    if (tgSliced.includes(btnTag) == true || ptSliced.includes(btnTag)) {
+    if (tgSliced.includes(btnTag) == true || ptSliced.includes(btnTag) || yearSliced.includes(btnTag) ) {
       //console.log('selected', divNode);
       // divNode.setAttribute('hidden', false);
       divNode.className = 'card opUp';
