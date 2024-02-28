@@ -152,7 +152,7 @@ a:hover {
   /* border: 0.1em solid gray; */
   /* box-shadow: 8px 8px 5px gray; */
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-content: flex-start;
   flex-basis: 2em;
