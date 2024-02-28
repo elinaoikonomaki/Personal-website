@@ -464,40 +464,38 @@ a:hover {
     margin: 0.2rem;
   }
   .windowView {height:100%; width:100%;flex-basis:auto;order: 6;}
-  .item-1{ order: 1; font-size: 0.1rem; }
+  .item-1{ 
+    order: 1;
+    font-size: 0.1rem; 
+    flex-direction: row;
+    justify-self: left;
+    text-align: left; 
+  }
   .item-2 { order: 4; font-size: 0.1rem;}
   .item-3{ order: 2; font-size: 0.1rem;}
   .item-4 { order: 3; font-size: 0.1rem;}
   
+
+  
   .filterbox {
-    order: 5;
-    width: 100%;
-    height: fit-content;
-    border: 0.1em solid gray; 
-    box-shadow: 4px 4px 2px gray;
-    flex-flow: column wrap;
-    text-align: left;
-    flex-basis: auto;
-    padding: 0.1rem;
+    display: none;
   }
  
-  .filterbox p{
+  /* .filterbox p{
     font-size: 1rem;
     color: rgb(0, 0, 0);
-  }
-  .filterbtn {
+  } */
+  /* .filterbtn {
     font-size: 1rem;
     margin: 0.15rem;
     padding: 0.3em;
     border-radius: 0.2rem;
+  } */
+
+  .filterbtn {
+    display:none;
   }
-  .displaybar{
-    height: 1.5rem;
-    border: 3px solid black;
-  }
-  .displaybar > p {
-    font-size: 0.7rem;
-  }
+ 
   .cardTitle {
     display: flex;
     position: relative;
