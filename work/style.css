@@ -16,7 +16,7 @@ body {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-color: #faf2ed;
+  background-color: #fbfaf9;
 }
 
 /* page layout*/
@@ -24,7 +24,7 @@ body {
   position: absolute;
   top: 0;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 0.5fr 4.5fr 1fr;
   grid-template-rows: minmax(40px,0.1fr) auto minmax(40px,0.1fr);
   gap: 1rem;
   margin: 2rem;
@@ -32,6 +32,28 @@ body {
   width: 95vw;
  
 }
+
+#container > svg {
+  display: block;
+  position: absolute;
+  top: 0;
+  left:0;
+  z-index: -1;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
 .dots {
   position: absolute;
   top:0;
@@ -40,9 +62,10 @@ body {
   height: 100%;
   z-index: -100;
 }
+
 a:link, a:visited  {
   text-decoration: none;
-  color: black;
+  /* color: black; */
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 800;
@@ -55,14 +78,53 @@ a:hover {
 
 .item-1 {
   grid-area: 1/1/2/2;
-  align-self: start;
-  justify-self: start;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-self: left;
+  text-align: left;
 }
 
-.item-1 > a {
-  color: blue;
-  text-decoration: underline;
+.unselected {
+  color: #999;
 }
+.selected {
+  color: black;
+}
+.pages {
+  margin: 10px;
+  position: relative;
+  
+}
+
+.selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; 
+  width: 100%; /* Start width */
+  height: 4px; /* Adjust thickness as needed */
+  background-color: black; /* Adjust color as needed */
+  animation: underline-animation 0.5s linear; /* Adjust animation duration and timing function as needed */
+}
+
+.pages:hover{
+  color: black;
+}
+
+
+@keyframes underline-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%; /* Middle of animation, full width */
+  }
+}
+
+
+
+
 
 .item-3 {
   grid-column-start: 3;
@@ -98,30 +160,13 @@ a:hover {
   margin-left: 1em;
 }
 .filterbox p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: justify;
   margin: 0.2rem;
   margin-bottom: 0.1rem;
+  font-weight: 800;
 }
 
-
-/* .filterbox > p {
-  margin: 4px;
-  font-style: bold;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  text-align: center;
-}
-
-.filterbox >p:first-of-type{ 
-  font-size: 16px;
-}
-
-.filterbox >p:last-of-type{
-  align-self:center;
-  color: blue;
-} */
 .filters {
   margin: 0.1rem;
   display: flex;
@@ -132,18 +177,26 @@ a:hover {
 
 .filterbtn {
   font-family: 'Inconsolata', monospace;
-  background-color: blue;
-  color: lightgoldenrodyellow;
-  padding: 0.3rem;
-  border-radius: 0.6rem;
-  border: none;
+  font-size: 15px;
+  background-color: rgb(215, 215, 249);
+  color: rgb(0, 0, 0);
+  padding: 0.4rem;
+  border-radius: 0.6rem ;
+  border: 2px solid rgb(28, 28, 78);
   margin: 0.2rem;
   cursor:pointer;
 }
 .filterbtn:hover {
-  background-color: orangered;
-  color:blue ;
+  background-color: rgb(2, 2, 38);
+  color:rgb(255, 255, 255);
+  border: 2px solid rgb(2, 2, 38);
   /* outline: 0.15rem solid blue; outline does not follow the shape of border-radius*/
+}
+
+.active {
+  background-color: rgb(2, 2, 38);
+  color:rgb(255, 255, 255);
+  border: 2px solid rgb(2, 2, 38);
 }
 
 /* Main div with projects display */

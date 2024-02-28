@@ -20,7 +20,7 @@ body{
 /* page layout*/
 #container {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 0.5fr 4.5fr 1fr;
   grid-template-rows: minmax(40px,0.1fr) auto minmax(40px,0.1fr);
   gap: 1rem;
   margin: 2rem;
@@ -30,7 +30,7 @@ body{
 }
 a:link, a:visited  {
   text-decoration: none;
-  color: black;
+ 
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 800;
@@ -41,11 +41,54 @@ a:hover {
   color: blue;
 }
 
+
 .item-1 {
   grid-area: 1/1/2/2;
-  align-self: start;
-  justify-self: start;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-self: left;
+  text-align: left;
 }
+
+.unselected {
+  color: #999;
+}
+.selected {
+  color: black;
+}
+.pages {
+  margin: 10px;
+  position: relative;
+  
+}
+
+.selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; 
+  width: 100%; /* Start width */
+  height: 4px; /* Adjust thickness as needed */
+  background-color: black; /* Adjust color as needed */
+  animation: underline-animation 0.5s linear; /* Adjust animation duration and timing function as needed */
+}
+
+.pages:hover{
+  color: black;
+}
+
+
+@keyframes underline-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%; /* Middle of animation, full width */
+  }
+}
+
+
 .item-3 {
   grid-column-start: 3;
   grid-column-end: 4;

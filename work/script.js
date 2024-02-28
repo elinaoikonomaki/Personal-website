@@ -2,6 +2,8 @@
 import {divWindow, typeDiv, tagDiv, yearDiv, tagsArray, typesArray, yearsArray} from "./selectors.js";
 import {Card,cards} from './classes.js'
 
+let tagFilters = new Set();
+
 // FETCING THE DATA
 const projects = fetch('../data.json')
   .then((response) => response.json())
@@ -49,11 +51,22 @@ function createBtn(el, targetDiv) {
   btn.innerText = el;
   btn.setAttribute('class', 'filterbtn');
   targetDiv.appendChild(btn);
-  btn.addEventListener('click', (e) => setTimeout(filterBtn(e.target), 500));
+  btn.addEventListener('click', (e) => {
+    const tag = e.target.innerText;
+    if (tagFilters.has(tag)) {
+      tagFilters.delete(tag);
+      btn.classList.remove("active");
+    } else {
+      tagFilters.add(tag);
+      btn.classList.add("active");
+    }
+    // Call filterBtn for each tag in tagFilters
+    tagFilters.forEach(filterBtn);  
+  });
 }
 
 function filterBtn(btn) {
-  let btnTag = btn.innerText;
+  let btnTag = btn;
   //console.log('button= ', btn.innerText);
   let divs = divWindow.querySelectorAll('div.card');
   console.log(divs);
