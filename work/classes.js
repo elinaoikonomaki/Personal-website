@@ -7,14 +7,14 @@ export class Card {
       this.title = title;
       this.titleclass = titleclass;
       this.classname = classname;
-      this.imgUrl = `/Personal-website${imgUrl}`;
+      this.imgUrl = `${imgUrl}`; //`/Personal-website${imgUrl}`;
       this.tags = tags;
       this.types = types;
       this.year = year;
       this.subtitle = subtitle;
       this.paragraph = paragraph;
-      this.videoUrl = `/Personal-website${videoUrl}`;
-      this.bwUrl = `/Personal-website${bwUrl}`;
+      this.videoUrl = `${videoUrl}`;
+      this.bwUrl = `${bwUrl}`;
       this.div = document.createElement('div');
       this.div.id = id;
       this.div.className = classname;

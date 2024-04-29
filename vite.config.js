@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path'; // Import path module from Node.js
 
 export default defineConfig({
-  base: '/Personal-website/',
+//   base: '/Personal-website/',
   build: {
     rollupOptions: {
       input: {
