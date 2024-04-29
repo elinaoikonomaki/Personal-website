@@ -38,7 +38,7 @@ body {
   position: absolute;
   display: grid;
   grid-template-columns: 0.5fr 4.5fr 1fr;
-  grid-template-rows: minmax(30px, auto) 1fr minmax(30px, auto);
+  grid-template-rows: minmax(30px, auto) 1fr minmax(30px, auto); /* add auto otherwise the grid would move if the windowView container changes*/
   gap: 1rem;
   height: 100vh;
   width: 100vw;
@@ -165,7 +165,7 @@ a:hover {
 }
 
 .filters {
-  margin: 0.1rem;
+  margin: 0.2rem;
   display: flex;
   flex-flow:row wrap;
   justify-content: flex-start;
@@ -174,7 +174,7 @@ a:hover {
 
 .filterbtn {
   border: none;
-  font-size: 12px;
+  font-size: 0.8rem;
   font-style: 'light';
   color: var(--secondary-light-blue);
   background-color: transparent;

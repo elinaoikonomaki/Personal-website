@@ -219,8 +219,8 @@ footer {
   display: flex;
   flex-flow: column wrap-reverse; 
   width: 60%;
-  font-size:15px;
-  padding-top: 30px;
+  font-size:1rem;
+  padding-top: 2rem;
   /* column-gap: 15px; */
   padding-bottom: 0.5rem;
   overflow: scroll;
