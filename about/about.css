@@ -1,3 +1,19 @@
+:root {
+  --main-background-color: #494e84;
+  --main-light-blue: 	#74afda;
+  --main-red: #dd164c;
+  --main-yellow: #da9100;
+  --main-cyan: #00a693;
+  --secondary-background: #292f6d;
+  --secondary-yellow: #ff9527;
+  --secondary-light-blue: #9497B6;
+  --pages-selected: #dd164c;
+  --pages-unselected: #bec0d3;
+  --section-title: #bec0d3; 
+}
+
+
+
 *{
   margin: 0px;
   padding: 0px;
@@ -5,45 +21,44 @@
   
 }
 body{
-  
-  background-color: #faf2ed;
-}
-.dots {
-  position: absolute;
-  top:0;
-  left: 0;
+  font-family: 'Inconsolata', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
   width: 100%;
-  height: 100%;
-  z-index: -100;
+  min-height: 100vh;
+  position: relative;
+  /* background-color: #9588f7 */
+  background-color: var(--secondary-background);
 }
 
 /* page layout*/
 #container {
   display: grid;
   grid-template-columns: 0.5fr 4.5fr 1fr;
-  grid-template-rows: minmax(40px,0.1fr) auto minmax(40px,0.1fr);
+  grid-template-rows: minmax(30px,0.1fr) auto minmax(30px,0.1fr);
   gap: 1rem;
-  margin: 2rem;
-  height: 90vh;
-  width: 95vw;
+  height: 100vh;
+  width: 100vw;
  
 }
 a:link, a:visited  {
   text-decoration: none;
- 
-  font-family: 'JetBrains Mono';
+  font-family: 'Inconsolata', monospace;
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
 }
 
 a:hover {
-  color: blue;
+  color: var(--pages-selected)
 }
 
 
 .item-1 {
-  grid-area: 1/1/2/2;
+  grid-area: 2/1/2/2;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -52,15 +67,16 @@ a:hover {
 }
 
 .unselected {
-  color: #999;
+  color: var(--pages-unselected);
 }
 .selected {
-  color: black;
+  color: var(--pages-selected);
 }
 .pages {
-  margin: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   position: relative;
-  
 }
 
 .selected::after {
@@ -70,12 +86,12 @@ a:hover {
   bottom: -5px; 
   width: 100%; /* Start width */
   height: 4px; /* Adjust thickness as needed */
-  background-color: black; /* Adjust color as needed */
+  background-color:var(--pages-selected); /* Adjust color as needed */
   animation: underline-animation 0.5s linear; /* Adjust animation duration and timing function as needed */
 }
 
 .pages:hover{
-  color: black;
+  color: var(--pages-selected)
 }
 
 
@@ -86,6 +102,35 @@ a:hover {
   100% {
     width: 100%; /* Middle of animation, full width */
   }
+}
+
+.icon-link {
+  text-decoration: none; /* Removes underline from links */
+  color: black; /* Initial color of icons */
+  cursor: pointer;
+}
+
+.icon-link:hover {
+  color: var(--main-red); /* Color when hovered */
+}
+
+footer {
+  grid-area: 3/2/3/3;
+  position: relative;
+  width: 100%;
+  color: var(--secondary-light-blue); /* Light text color */
+  text-align: center; /* Centers the footer content */
+  font-size: 12px; 
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content i {
+  margin-right: 5px; /* Adds a small space between the icon and the text */
 }
 
 
@@ -118,33 +163,16 @@ a:hover {
 
 /* Main div with projects display */
 .windowView {
-  grid-row: 1/-1;
+  grid-row: 2/3;
   grid-column: 2/3;
   outline: inset medium;
   border-top: 0;
   display: flex;
   flex-flow: column wrap;
-  box-shadow: 8px 8px 5px gray;
-  background-color: #fff;
-  
+  box-shadow: 12px 12px 0px 0px #161616;
+  background-color: #ffffff;
+  overflow-y: auto;
 }
-
-.displaybar {
-  display: inline-flex;
-  justify-content: left;
-  height: 5%;
-  width: 40%;
-  border: 3px solid black;
-  align-items: center;
-  padding-left: 1%;
-  /* outline: outset medium; */
-}
-.displaybar p{
- 
-  font-size: large;
-  font-family: 'JetBrains Mono';
-}
-
 .about {
   display: flex;
   width: 100%;
@@ -153,11 +181,29 @@ a:hover {
   align-items: flex-start;
   gap: 10px 20px;
   padding: 10px;
+  
 }
-.about img {
+.about .column-left {
   width: 30%;
   margin: 10px;
+  justify-content: center;
 }
+.about .column-left img{
+  width: 100%;
+  
+}
+
+#links {
+  position: relative;
+  margin: 0;
+  margin-left: 1.5rem;
+  margin-top: 2rem;
+}
+
+#links p {
+  margin: 10px;
+}
+
 
 h3 {
   text-decoration: underline;
@@ -174,6 +220,8 @@ h3 {
   font-size:18px;
   padding-top: 30px;
   column-gap: 15px;
+  padding-bottom: 1rem;
+  overflow: scroll;
 }
 
 .text-content p {
@@ -213,7 +261,18 @@ li > strong {
   .item-2 { order: 2; font-size: 0.1rem;}
   .item-3{ order: 3; font-size: 0.1rem; }
   .item-4 { order: 4; font-size: 0.1rem; }
-  .windowView {height:100%; width:100%;flex-basis:auto;order: 5; justify-content: center;}
+  .windowView {
+    height:100%; 
+    width:100%;
+    flex-basis:auto;
+    order: 5; 
+    justify-content: center;
+  }
+  footer {
+    order: 99;  /* Ensure it's the last in flex order */
+    width: 100%;  /* Ensure it spans full width */
+    position: relative;  /* It's okay to keep it relative if flexbox handles the placement correctly */
+  }
   .about{
     justify-content: center;
   }
@@ -231,6 +290,12 @@ li > strong {
   }
   .displaybar > p {
     font-size: 0.7rem;
+  }
+  #links {
+    position: relative;
+    margin: 1.5rem;
+    /* margin-left: 1.5rem; */
+    /* margin-top: 42rem; */
   }
   .logos{
     width: auto;

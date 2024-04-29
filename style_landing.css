@@ -1,10 +1,35 @@
+
+
 body {
 	margin: 0;
   box-sizing: border-box;
+  font-family: "IBM Plex Sans", sans-serif;
+  
 }
 :root {
   --secondary-color: #151226;
   --contrast-color: #BF307F;
+  --main-red: #dd164c;
+  --main-background-color: #494e84;
+  --main-light-blue: 	#74afda;
+  --main-yellow: #da9100;
+  --main-cyan: #00a693;
+  --secondary-background: #292f6d;
+  --secondary-yellow: #ff9527;
+  --secondary-light-blue: #9497B6;
+  --pages-selected: #dd164c;
+  --pages-unselected: #bec0d3;
+  --section-title: #bec0d3;
+}
+
+#three-background {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+	z-index: -10;
+  position: absolute;
+  cursor: pointer;
 }
 
 .landing_page {
@@ -14,91 +39,90 @@ body {
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-  margin-top: 9rem;
+  margin-top: 35rem;
   margin-bottom: 3rem;
-	
-	/* bottom: -1000px; */
 	animation: fade 2s forwards;
 	animation-delay:3s;
   opacity: 1;
-	
 }
+
+
+
 @keyframes fade {
 	from, to { margin-bottom: 60px;}
 }
+
 .landing_page >p {
-	font-family: 'Inconsolata', monospace;
+	font-weight: 300;
+  font-style: normal;
   font-size: 0.6em;
 	color: beige;
+  z-index: 10;
 }
-.background {
-  opacity: 0.5;
-}
-.background video {
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-	z-index: -1;
-}
+
 .title {
   overflow: hidden;
   height: auto;
-  top: 150px;
+  top: 350px;
+  z-index: 10;
 }
 
 h1 {
-    font-size: 28px;
-    font-family: 'Inconsolata', monospace;
-    color: black;
+    font-size: 16px;
+    /* color: rgb(45, 45, 45); */
+    color: white;
     margin-bottom: 5px;
     transform: translateY(150px);
-    animation: slideUp .8s ease forwards .5s;
+    animation: slideUp .10s ease forwards .15s;
+    z-index: 10;
 }
 .par {
-  width: 60%;
+  width: 30%;
   height: auto;
   overflow: hidden;
-  font-size: 24px;
-  font-family: 'Inconsolata', monospace;
+  font-size: 14px;
   text-align: justify;
+  z-index: 10;
+  color: white;
+  
 
 }
 
 p{
-  line-height: 28px;
+  line-height: 20px;
   transform: translateY(500px);
-  animation: slideUp .8s ease-in-out forwards .9s;
+  animation: slideUp .20s ease-in-out forwards .25s;
+  animation-delay: 1s;
+  z-index: 10;
+  
 }
-
 
 .wrapper {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
-.wrapper button {
-  margin: 2rem;
-  margin-bottom: 3rem;
-  padding: 1rem;
+.wrapper .arrow-button {
+  color: var(--secondary-light-blue);
+  /* margin-bottom: 3rem; */
+  padding: 0.3rem;
   transform: translateY(800px);
-  outline: 0.1rem solid black;
-  font-family: 'Inconsolata', monospace;
-  font-size: 18px;
-  animation: slideUp .8s ease forwards .5s;
-  animation-delay: 2s;
+  font-size: 14px;
+  font-weight: 600;
+  animation: slideUp .40s ease forwards .45s;
+  animation-delay: 3s;
   transition: color ;
   background: transparent;
   border: none;
+  z-index: 10;
 }
 
-.wrapper button:hover {
-  color: rgb(240, 238, 238);
-  background-color: #151226;
+.arrow-button .arrow:hover {
   cursor:pointer;
+  color: var(--main-red);
+ 
 }
 
 @keyframes slideUp {
@@ -112,7 +136,7 @@ p{
   }
 }
 /* media queries if the screen is smaller than 600px apply the following code */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .title{
     top: 5rem;}
   p {
@@ -120,26 +144,25 @@ p{
     
   }
   .par {
-    font-size: 1rem;
+    /* font-size: 1rem; */
     width: 80%;
   }
   h1 {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
     margin-bottom: 0.1rem;
     
 }
-.wrapper button {
+/* .wrapper button {
   margin: 0.5rem;
   margin-bottom: 3rem;
   padding: 0.3rem;
-  transform: translateY(10rem);
+  transform: translateY(-100rem);
   outline: 0.1rem solid black;
-  font-family: 'Inconsolata', monospace;
   font-size: 0.8rem;
   animation: slideUp .8s ease forwards .5s;
   animation-delay: 2s;
   transition: color ;
   background: transparent;
   border: none;
-}
+} */
 }

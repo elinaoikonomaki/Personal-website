@@ -1,13 +1,30 @@
+:root {
+  --main-background-color: #494e84;
+  --main-light-blue: 	#74afda;
+  --main-red: #dd164c;
+  --main-yellow: #da9100;
+  --main-cyan: #00a693;
+  --secondary-background: #292f6d;
+  --secondary-yellow: #ff9527;
+  --secondary-light-blue: #9497B6;
+  --pages-selected: #dd164c;
+  --pages-unselected: #bec0d3;
+  --section-title: #bec0d3;
+  
+  
+}
+/* #d4d5e1; */
+
+
 *{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
-/* Works on Firefox */
 
 
 body {
-  font-family: 'JetBrains Mono';
+  font-family: 'Inconsolata', monospace;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -16,57 +33,46 @@ body {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-color: #fbfaf9;
+  /* background-color: #9588f7 */
+  background-color: var(--secondary-background);
 }
 
 /* page layout*/
 #container {
   position: absolute;
-  top: 0;
   display: grid;
   grid-template-columns: 0.5fr 4.5fr 1fr;
-  grid-template-rows: minmax(40px,0.1fr) auto minmax(40px,0.1fr);
+  grid-template-rows: minmax(30px,0.1fr) auto minmax(30px,0.1fr);
   gap: 1rem;
-  margin: 2rem;
-  height: 90vh;
-  width: 95vw;
+  height: 100vh;
+  width: 100vw;
  
 }
 
-#container > svg {
-  display: block;
-  position: absolute;
-  top: 0;
-  left:0;
-  z-index: -1;
-}
-
-.path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: dash 1s linear forwards;
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-
-.dots {
-  position: absolute;
-  top:0;
-  left: 0;
+footer {
+  grid-area: 3/2/3/3;
+  position: relative;
   width: 100%;
-  height: 100%;
-  z-index: -100;
+  color: var(--secondary-light-blue); /* Light text color */
+  text-align: center; /* Centers the footer content */
+  font-size: 12px;
+  
 }
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content i {
+  margin-right: 5px; /* Adds a small space between the icon and the text */
+}
+
 
 a:link, a:visited  {
   text-decoration: none;
-  /* color: black; */
-  font-family: 'JetBrains Mono';
+  font-family: 'Inconsolata', monospace;
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -77,7 +83,7 @@ a:hover {
 }
 
 .item-1 {
-  grid-area: 1/1/2/2;
+  grid-area: 2/1/2/2;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -86,15 +92,16 @@ a:hover {
 }
 
 .unselected {
-  color: #999;
+  color: var(--pages-unselected);
 }
 .selected {
-  color: black;
+  color: var(--pages-selected);
 }
 .pages {
-  margin: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   position: relative;
-  
 }
 
 .selected::after {
@@ -104,12 +111,12 @@ a:hover {
   bottom: -5px; 
   width: 100%; /* Start width */
   height: 4px; /* Adjust thickness as needed */
-  background-color: black; /* Adjust color as needed */
+  background-color: var(--pages-selected); /* Adjust color as needed */
   animation: underline-animation 0.5s linear; /* Adjust animation duration and timing function as needed */
 }
 
 .pages:hover{
-  color: black;
+  color: var(--pages-selected);
 }
 
 
@@ -121,8 +128,6 @@ a:hover {
     width: 100%; /* Middle of animation, full width */
   }
 }
-
-
 
 
 
@@ -148,7 +153,7 @@ a:hover {
 
 /* filterbox */
 .filterbox {
-  grid-area: 1 / 3 / 3/ auto;
+  grid-area: 2 / 3 / 3/ auto;
   /* border: 0.1em solid gray; */
   /* box-shadow: 8px 8px 5px gray; */
   display: flex;
@@ -156,15 +161,16 @@ a:hover {
   justify-content: flex-start;
   align-content: flex-start;
   flex-basis: 2em;
-  background-color: rgba(0, 0, 0, 0);
+  
   margin-left: 1em;
 }
 .filterbox p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: justify;
   margin: 0.2rem;
   margin-bottom: 0.1rem;
   font-weight: 800;
+  color: var(--section-title);
 }
 
 .filters {
@@ -176,94 +182,119 @@ a:hover {
 
 
 .filterbtn {
+  border: none;
   font-family: 'Inconsolata', monospace;
-  font-size: 15px;
-  background-color: rgb(215, 215, 249);
-  color: rgb(0, 0, 0);
-  padding: 0.4rem;
-  border-radius: 0.6rem ;
-  border: 2px solid rgb(28, 28, 78);
-  margin: 0.2rem;
+  font-size: 14px;
+  /* background-color:#292f6d; */
+  color: var(--secondary-light-blue);
+  background-color: transparent;
+  padding: 0.3rem;
+  border-radius: 0.4rem ;
+  outline: 0.01rem solid var(--secondary-light-blue);
+  margin: 0.3rem;
   cursor:pointer;
 }
 .filterbtn:hover {
-  background-color: rgb(2, 2, 38);
-  color:rgb(255, 255, 255);
-  border: 2px solid rgb(2, 2, 38);
+  color: var(--main-red);
+  outline: 0.2rem solid var(--main-red);
   /* outline: 0.15rem solid blue; outline does not follow the shape of border-radius*/
 }
 
 .active {
-  background-color: rgb(2, 2, 38);
-  color:rgb(255, 255, 255);
-  border: 2px solid rgb(2, 2, 38);
+  outline: 0.2rem solid var(--main-red);
 }
 
 /* Main div with projects display */
 .windowView {
-  grid-row: 1/-1;
+  grid-row: 2/3;
   grid-column: 2/3;
-  border: 2px solid black;
   display: flex;
-  flex-flow: column wrap;
-  box-shadow: 8px 8px 5px gray;
-  background-color: #fff;
-  
-}
-.displaybar {
-  display: inline-flex;
-  justify-content: left;
-  height: 5%;
-  width: 40%;
-  border: 3px solid black;
-  align-items: center;
-  padding-left: 1%;
-  /* outline: outset medium; */
-}
-.displaybar p{
-  font-size: large;
-  font-family: 'JetBrains Mono';
+  flex-flow: row wrap;
+  overflow: hidden;
+  column-gap: 0.5rem;
+  border-radius: 5px;
+  justify-content: space-around; 
+  align-items: stretch;
 }
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  border: 0.1em solid gray;
-  width: 100%;
   cursor: pointer;
- 
-  flex-grow: 1;
-  flex-shrink: 0.5;
-  transition-property: flex-grow;
+  padding: 0.5rem;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  width: 5%;
+  flex-grow: 0;  
+  transition-property: flex-grow; 
   transition-duration: 0.5s;
-  /* transition-delay: 0.2s; */
   transition-timing-function: ease-in-out;
+  
 }
 
+.card.visible {
+  flex-grow: 1;  /* Set flex-grow to 1 for visible cards */
+  opacity: 1;
+}
+
+.card.hidden {
+  flex-grow: 0;  /* Keep flex-grow at 0 for hidden cards */
+  opacity: 0;
+  width: 0;
+}
 
 .card:hover {
   flex-grow: 10;
-  border: 0.05em solid rgb(1, 1, 1);
-  box-shadow: 20px 20px 30px rgb(65, 63, 62);
-  /* transform: translate(20px,20px); */
+  border: 4px solid var(--main-red);
 }
 
+/* Base styles for positioning text elements within the card, adjusted for flexbox */
+.cardText {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+  transition: opacity 1.5s ease;
+  opacity: 0;
+  color: white;
+}
 
-
-/* .windowView .card:hover::after{
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  flex-grow: 1;
-  flex-shrink: 0.5;
-} */
-
-/*card title*/
+/* Specific styles for title, subtitle, and keywords */
 .cardTitle {
-  display: inline-flex;
-  background-color: #fff;
-  color: black;
-  font-size: 0.8em;
+  font-size: 1.5em;
+  order: 1; /* Ensures title is at the top */
+}
+
+.cardSubtitle {
+  font-size: 1em;
+  order: 2; /* Ensures subtitle is below title */
+}
+
+.cardKeywords {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  order: 3; /* Ensures keywords are at the bottom */
+  font-size: 0.7em;
+}
+
+.keywordTag {
+  background-color: transparent; /* Customize color as needed */
+  color: var(--main-red);
+  border-radius: 10px;
+  padding: 3px 5px;
+  margin: 4px;
+  outline: 1px solid var(--main-red);
+  display: inline-block;
 }
 
 .cardClone {
@@ -301,12 +332,12 @@ a:hover {
 }
 
 .card-content::-webkit-scrollbar-track {
-  background: rgb(243, 241, 241);
+  /* background: rgb(243, 241, 241); */
   border: 0.1rem solid black;
 }
 
 .card-content::-webkit-scrollbar-thumb {
-  background-color: rgb(210, 208, 207);
+  /* background-color: rgb(210, 208, 207); */
   padding: 0.1rem;
   border-radius: 0;
   border: 0.1rem solid rgb(0, 0, 0);
@@ -416,31 +447,6 @@ a:hover {
 
 /* --- */
 
-.opDown {
-  opacity: 0%;
-  transition: all 1s ease;
-}
-
-.hide {
- border: 0;
- min-height: 0%;
- height: 0%;
- flex-grow: 0;
- flex-shrink: 50;
- transition: all 1s;
-}
-.opUp {
-  opacity: 100%;
-  transition: all 1s ease;
-}
-.show {
-  border: 0.1em solid gray;
-  width: 100%;
-  align-items: center;
-  flex-grow: 1;
-  flex-shrink: 0.5;
-  transition: all 1s;
-}
 
 
 /* media queries */
@@ -451,6 +457,24 @@ a:hover {
     margin: 0.4rem;
     height: 96vh;
     width: 98vw;
+  }
+  /* .cardText {
+    font-size: 1.2rem;
+  } */
+  .cardTitle {
+    font-size: 1rem;
+  }
+  .cardSubtitle {
+    font-size: 0.8rem;
+  }
+  .cardKeywords {
+    font-size: 0.8rem;
+  }
+
+  .keywordTag {
+    border-radius: 5px;
+    padding: 2px 2px;
+    margin: 4px;
   }
 }
 
@@ -463,7 +487,18 @@ a:hover {
     height: 100%;
     margin: 0.2rem;
   }
-  .windowView {height:100%; width:100%;flex-basis:auto;order: 6;}
+  .windowView {
+    height:100%; 
+    width:100%;
+    flex-basis:auto;
+    flex-flow: column wrap;
+    order: 6;
+  }
+  .card {
+    width: 100%;
+    height: 5%;
+  }
+  
   .item-1{ 
     order: 1;
     font-size: 0.1rem; 
@@ -475,6 +510,11 @@ a:hover {
   .item-3{ order: 2; font-size: 0.1rem;}
   .item-4 { order: 3; font-size: 0.1rem;}
   
+  footer {
+    order: 99;  /* Ensure it's the last in flex order */
+    width: 100%;  /* Ensure it spans full width */
+    position: relative;  /* It's okay to keep it relative if flexbox handles the placement correctly */
+  }
 
   
   .filterbox {
@@ -496,13 +536,6 @@ a:hover {
     display:none;
   }
  
-  .cardTitle {
-    display: flex;
-    position: relative;
-    color: black;
-    font-size: 0.01rem;
-    
-  }
   .card-content video {
     width: 100%;
     height: 30%;
@@ -532,3 +565,15 @@ a:hover {
       border: 0.1rem solid rgb(163, 160, 160);
   }
 }
+
+
+/* 
+.dots {
+  color: rgba(215, 215, 249, 0.2);
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+} */

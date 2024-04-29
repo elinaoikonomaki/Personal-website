@@ -1,104 +1,128 @@
+import { divWindow, typeDiv, tagDiv, yearDiv, tagsArray, typesArray, yearsArray } from './selectors.js';
+import { Card } from './classes.js';
 
-import {divWindow, typeDiv, tagDiv, yearDiv, tagsArray, typesArray, yearsArray} from "./selectors.js";
-import {Card,cards} from './classes.js'
+const activeCards = new Set();
+const activeFilters = new Set();
+const allCards = []; // Will store all card references and their current DOM status
 
-let tagFilters = new Set();
+// FETCHING DATA
+async function fetchData() {
+    const response = await fetch('../data.json');
+    const data = await response.json();
+    console.log(data)
+    const [cards, allTagsSet,allTypesSet, allYearsSet]  = initializeCards(data.projects);
+    initializeCardsToDOM(cards)
+    console.log(cards)
+    createFilters(allTagsSet,allTypesSet, allYearsSet, tagDiv, typeDiv, yearDiv )
+    
+}
 
-// FETCING THE DATA
-const projects = fetch('../data.json')
-  .then((response) => response.json())
-  .then((data) =>
-    data['projects'].forEach((project, i) => {
-      //creating the cards for the projects from the json
-      let projDivs = new Card(`card-${i}`,'card',project.name,'cardTitle',project.img,project.tags,project.type, project.year, project.subtitle, project.description, project.video, project.bwImg);
-      projDivs.initCard();
-      updateDOM();
+function initializeCards(projects) {
+    const cards = []
+    const allTagsSet = new Set();
+    const allTypesSet = new Set();
+    const allYearsSet = new Set();
+    projects.forEach((project, i) => {
+        //Create the card
+        const card = new Card(`card-${i}`, 'card', project.name, 'cardTitle', project.img, project.tags, project.type, project.year, project.subtitle, project.description, project.video, project.bwImg);
+        cards.push(card)  
+        activeCards.add(card)
 
-      // adding tags to an array to create buttons. Should be written differently for optimization.
-      let tagsTemp = Object.values(project.tags);
-      tagsTemp.forEach((tag) => {
-        if (tagsArray.includes(tag) === false) {
-          tagsArray.push(tag);
-          createBtn(tag, tagDiv);
-        }
+        //Add projects filters the sets
+        project.tags.forEach(tag => allTagsSet.add(tag));
+        project.type.forEach(type => allTypesSet.add(type));
+        allYearsSet.add(project.year);
+           
+    });
+    console.log(allTagsSet, allTypesSet, allYearsSet)
+    return [cards, allTagsSet, allTypesSet, allYearsSet]
+}
+
+
+function initializeCardsToDOM(cards) {
+  console.log(divWindow, cards)
+  divWindow.innerHTML = '';
+  cards.forEach(card => {
+      card.div.className = 'card visible';
+      allCards.push({
+        card: card,
+        inDOM: true, // Initially all cards are in the DOM
+        div: card.div
       });
+      divWindow.appendChild(card.div)
+  })
+}
 
-      let typeTemp = Object.values(project.type);
-      typeTemp.forEach((ptype) => {
-        if (typesArray.includes(ptype) === false) {
-          typesArray.push(ptype);
-          createBtn(ptype, typeDiv);
-        }
-      });
+function createFilters(allTagsSet,allTypesSet, allYearsSet, tagDiv, typeDiv, yearDiv ){
+  allTagsSet.forEach(tag => createFilterBtn(tag,tagDiv))
+  allTypesSet.forEach(type => createFilterBtn(type,typeDiv))
+  allYearsSet.forEach(year => createFilterBtn(year,yearDiv))
+}
 
-      let year =  project.year;
-      if (yearsArray.includes(year) === false){
-        yearsArray.push(year);
-        createBtn(year, yearDiv);
+function createFilterBtn(element, targetDiv) {
+    const btn = document.createElement('button');
+    btn.innerText = element;
+    btn.className = 'filterbtn';
+    targetDiv.appendChild(btn);
+
+    btn.addEventListener('click', () => {
+      if (activeFilters.has(element)) {
+          activeFilters.delete(element);
+          btn.classList.remove('active');
+      } else {
+          activeFilters.add(element);
+          btn.classList.add('active');
       }
-    })
-  );
+      applyFilters();
+  });
+}
 
-function updateDOM(){
-  for (let i = 0; i < cards.length; i++) {
-    divWindow.appendChild(cards[i]);
+function applyFilters() {
+  if (activeFilters.size === 0) {
+      // Show all cards
+      allCards.forEach(item => {
+          if (!item.inDOM) {
+              divWindow.appendChild(item.div); // Re-add to DOM if not already there
+              item.inDOM = true;
+          }
+          item.div.className = 'card visible';
+      });
+      return;
   }
-}
 
-// FILTER BUTTONS FUNCTIONALITY
-function createBtn(el, targetDiv) {
-  let btn = document.createElement('button');
-  btn.innerText = el;
-  btn.setAttribute('class', 'filterbtn');
-  targetDiv.appendChild(btn);
-  btn.addEventListener('click', (e) => {
-    const tag = e.target.innerText;
-    if (tagFilters.has(tag)) {
-      tagFilters.delete(tag);
-      btn.classList.remove("active");
-    } else {
-      tagFilters.add(tag);
-      btn.classList.add("active");
-    }
-    // Call filterBtn for each tag in tagFilters
-    tagFilters.forEach(filterBtn);  
+  allCards.forEach(item => {
+      const { card, div } = item;
+      const tags = card.tags;
+      const types = card.types;
+      const year = card.year.toString();
+
+      if (matchesAllFilters(tags, types, year)) {
+          if (!item.inDOM) {
+              divWindow.appendChild(div); // Re-add to DOM if not already there
+              item.inDOM = true;
+          }
+          div.className = 'card visible';
+      } else {
+          div.className = 'card hidden';
+          // Remove the card from DOM after transition only if it is still hidden
+          div.addEventListener('transitionend', function handler(e) {
+              if (e.propertyName === 'flex-grow' && div.classList.contains('hidden')) {
+                  div.removeEventListener('transitionend', handler);
+                  divWindow.removeChild(div);
+                  item.inDOM = false;
+              }
+          }, {once: true});
+      }
   });
 }
 
-function filterBtn(btn) {
-  let btnTag = btn;
-  //console.log('button= ', btn.innerText);
-  let divs = divWindow.querySelectorAll('div.card');
-  console.log(divs);
 
-  //searching for the matching divs
-  divs.forEach((div) => {
-    let divTg = div.dataset.fr;
-    let tgSliced = divTg.split(',');
-    let divPt = div.dataset.pt;
-    let ptSliced = divPt.split(',');
-    let divYear = div.dataset.year;
-    let yearSliced = divYear.split(',');
-    let divNode = document.getElementById(div.attributes['id'].nodeValue);
-    //i should fix the case that you click again on the same button twice. --> see javascript btn
-    if (tgSliced.includes(btnTag) == true || ptSliced.includes(btnTag) || yearSliced.includes(btnTag) ) {
-      //console.log('selected', divNode);
-      // divNode.setAttribute('hidden', false);
-      divNode.className = 'card opUp';
-      //console.log('opUp');
-      setTimeout(() => {
-        divNode.className = 'card opUp show';
-      }, 300);
-    } else {
-      //console.log('should be remove', divNode);
-      divNode.className = 'card opDown';
-      //console.log('opDown');
-      setTimeout(() => {
-        divNode.className = 'card opDown hide';
-      }, 300);
-    }
-  });
-  return;
+function matchesAllFilters(tags, types, year) {
+  // Check if every filter in activeFilters matches the card's tags, types, or year
+  return Array.from(activeFilters).every(filter =>
+      tags.includes(filter) || types.includes(filter) || filter === year
+  );
 }
 
+fetchData()
 

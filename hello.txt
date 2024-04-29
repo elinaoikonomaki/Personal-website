@@ -1,1 +1,35 @@
 Hello Git
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="style_landing.css">
+  <script src="//instant.page/5.1.1" type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+  
+  <title>Portfolio</title>
+</head>
+<body data-instant-intensity="viewport">
+
+  <div class="landing_page">
+    <div id="three-background"></div>
+    <div class="title">
+      <h1>Hi, I am Elina. </h1>
+    </div>
+    <div class="par">
+      <p>
+        I am a <strong> data visualization designer and engineer </strong>focusing on building tools and interactive <strong> data visualizations </strong>for data analysis, research & machine learning. I graduated from Massachusetts Institute of Technology (MIT) with a master's in Computer Science and in Design & Computation. 
+      </p>
+    </div>
+    <div class="wrapper">
+          <button  onclick="window.location.href='./work/work.html';">Learn more</button>
+    </div>
+  </div>
+  <script src="landing.js"></script>
+ 
+</body>
+
+</html>
