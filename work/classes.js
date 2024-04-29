@@ -13,8 +13,8 @@ export class Card {
       this.year = year;
       this.subtitle = subtitle;
       this.paragraph = paragraph;
-      this.videoUrl = videoUrl;
-      this.bwUrl = bwUrl;
+      this.videoUrl = `/Personal-website${videoUrl}`;
+      this.bwUrl = `/Personal-website${bwUrl}`;
       this.div = document.createElement('div');
       this.div.id = id;
       this.div.className = classname;
