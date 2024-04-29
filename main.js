@@ -83,7 +83,7 @@ function loadObjects(numberOfObjects, scene) {
     const loader = new OBJLoader();
 
     for (let i = 0; i <= numberOfObjects -1 ; i++) {
-        const file = `./public/models/obj_${i+1}.obj`;
+        const file = `./models/obj_${i+1}.obj`;
         loader.load(file, (object) => {
             if (object.children.length > 0) {
                 init(object.children[0].geometry, i);  // Pass index to init
