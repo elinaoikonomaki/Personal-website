@@ -237,6 +237,17 @@ footer {
 .text-content ul {
   list-style: none;
 }
+
+.text-content {
+  overflow: auto;  /* Enables scrolling but only when necessary */
+  scrollbar-width: none;  /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+.text-content::-webkit-scrollbar {
+  display: none;  /* For Chrome, Safari, and Opera */
+}
+
 li {
   padding-top: 8px;
 }
