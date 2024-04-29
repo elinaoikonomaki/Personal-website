@@ -1,11 +1,16 @@
 
 
 body {
-	margin: 0;
+  margin: 0;
   box-sizing: border-box;
   font-family: "IBM Plex Sans", sans-serif;
-  
+  height: 100vh; /* Ensures the body takes full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This will push your content to the top and bottom */
+  background-color: var(--secondary-background);
 }
+
 :root {
   --secondary-color: #151226;
   --contrast-color: #BF307F;
@@ -33,19 +38,20 @@ body {
 }
 
 .landing_page {
-	height: 100%;
+	height: 100vh;
+  width: 100%;
   /*This part is important for centering*/
   display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-  margin-top: 35rem;
-  margin-bottom: 3rem;
+  margin: auto 0 3rem 0;
+  align-items: center; 
 	animation: fade 2s forwards;
+  flex-grow: 1;
 	animation-delay:3s;
   opacity: 1;
 }
-
 
 
 @keyframes fade {
@@ -55,37 +61,40 @@ body {
 .landing_page >p {
 	font-weight: 300;
   font-style: normal;
-  font-size: 0.6em;
+  font-size: 1rem;
 	color: beige;
   z-index: 10;
+}
+
+.title, .par {
+  width: 100%; /* Ensures these elements take full width of their container */
+  text-align: center; /* Centers the text inside them */
+  z-index: 5;
+  position:relative;
 }
 
 .title {
   overflow: hidden;
   height: auto;
-  top: 350px;
-  z-index: 10;
+  z-index: 5;
 }
 
 h1 {
-    font-size: 16px;
-    /* color: rgb(45, 45, 45); */
-    color: white;
-    margin-bottom: 5px;
-    transform: translateY(150px);
-    animation: slideUp .10s ease forwards .15s;
-    z-index: 10;
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 5px;
+  transform: translateY(150px);
+  animation: slideUp .10s ease forwards .15s;
+  z-index: 10;
 }
 .par {
   width: 30%;
   height: auto;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 0.9rem;
   text-align: justify;
   z-index: 10;
   color: white;
-  
-
 }
 
 p{
@@ -98,10 +107,12 @@ p{
 }
 
 .wrapper {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
+  padding: 1rem 0;
+  cursor: pointer;
 }
 
 .wrapper a {
@@ -110,14 +121,12 @@ p{
 
 .wrapper .arrow-button {
   color: var(--secondary-light-blue);
-  /* margin-bottom: 3rem; */
   padding: 0.3rem;
-  transform: translateY(800px);
-  font-size: 14px;
+  transform: translateY(100vh); /* Start below the viewable area */
+  font-size: 1rem;
   font-weight: 600;
-  animation: slideUp .40s ease forwards .45s;
-  animation-delay: 3s;
-  transition: color ;
+  animation: slideUp 0.40s ease forwards 3s; /* Consolidated the delay into the shorthand */
+  transition: color 0.3s; /* Ensure color transition is smooth */
   background: transparent;
   border: none;
   z-index: 10;
@@ -129,25 +138,21 @@ p{
 }
 
 .arrow-button .arrow:hover {
-  cursor:pointer;
+  cursor: pointer;
   color: var(--main-red);
- 
 }
 
 @keyframes slideUp {
-  0%{
-    transform: translateY(300px);
-    
+  from {
+    transform: translateY(100vh); /* Start from 100% of the viewport height */
   }
-  100%{
-    transform: translateY(0px);
-    
+  to {
+    transform: translateY(0); /* End at the natural position */
   }
 }
 /* media queries if the screen is smaller than 600px apply the following code */
 @media screen and (max-width: 700px) {
-  .title{
-    top: 5rem;}
+  
   p {
     line-height: 1rem;
     
