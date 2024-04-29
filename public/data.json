@@ -10,6 +10,16 @@
         "bwImg":"/assets/img/disasters_bw.jpg",
         "year":"2023"
       },
+      { "name": "Travel Allocation of Multiple Student Groups in Paris",
+        "subtitle":"A prototype interface for visualizing how Mobi's algorithm builds itineraries for groups of students in Paris.",
+        "type":[ "Data Visualization"],
+        "tags": ["React","WebGL","Typescript","Mapbox"],
+        "description": "An interactive visualization prototype that visualizes how our constraint programming algorithm can allocate and distribute student groups across multiple days in Paris. The design shows the different scenarios, how Mobi's algorithm meets the constraints and the itineraries along a week travel.",
+        "video":"/assets/video/ef-viz.mp4",
+        "img":"/assets/img/ef-viz.jpg",
+        "bwImg":"/assets/img/ef-viz_bw.jpg",
+        "year":"2024"
+      },
     { "name": "Climate Data in Travel Exploration",
         "subtitle":"A storytelling example of how Mobi in incorporating temporal climate parameters in offering travel plans.",
         "type":[ "Data Visualization"],
@@ -39,16 +49,6 @@
       "img":"/assets/img/Umap_final.jpg",
       "bwImg":"/assets/img/Umap_final_bw.jpg",
       "year":"2022"
-    },
-    { "name": "Visualize changes in 3D Cartography",
-      "subtitle":"Comparing geospatial transformations with 3D point clouds",
-      "type":[ "Data Visualization"],
-      "tags": ["Javascript","Three.js","WebGL"],
-      "description": "A 3D point cloud web data visualization that compares photogrammetry models of 3D scanned spaces and identifies changes in the space by performing comparison between two dense 3D points clouds. In collaboration with the MIT Virtual Experience Lab.",
-      "video":"/assets/video/3dCarto.m4v",
-      "img":"/assets/img/3dCarto.jpg",
-      "bwImg":"/assets/img/3dCarto_bw.jpg",
-      "year":"2020"
     },
     { "name": "Visualizing Multimodal Learning",
       "subtitle":"Explaining Deep Learning with Data Visualization",
