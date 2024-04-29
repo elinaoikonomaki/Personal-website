@@ -147,6 +147,7 @@ a:hover {
 
 /* filterbox */
 .filterbox {
+  box-sizing: border-box;
   grid-area: 2 / 3 / 3/ auto;
   display: flex;
   flex-flow: row wrap;
@@ -171,29 +172,22 @@ a:hover {
   justify-content: flex-start;
 }
 
-
 .filterbtn {
-  border: none;
-  font-size: 0.8rem;
-  font-style: 'light';
+  border: none; /* No border to affect sizing */
+  font-size: 0.9rem;
   color: var(--secondary-light-blue);
   background-color: transparent;
-  padding: 0.3rem;
-  border-radius: 0.4rem ;
-  /* outline: 0.01rem solid var(--secondary-light-blue); */
-  box-shadow: 0 0 0 0.06rem var(--secondary-light-blue); /* Trick because Safari doesn't support border-radius and outline */
+  padding: 0.3rem; /* Maintain consistent padding */
+  border-radius: 0.5rem;
   margin: 0.3rem;
-  cursor:pointer;
-}
-.filterbtn:hover {
-  color: var(--main-red);
-  /* outline: 0.2rem solid var(--main-red); */
-  box-shadow: 0 0 0 0.2rem var(--main-red); /* Trick because Safari doesn't support border-radius and outline */
+  cursor: pointer;
+  transition: color 0.3s, box-shadow 0.3s; /* Smooth transition for color and box-shadow */
+  box-shadow: 0 0 0 0.08rem  #9497b682; /* Initial box-shadow as outline */
 }
 
-.active {
-  box-shadow: 0 0 0 0.2rem var(--main-red);
+.filterbtn:hover, .active {
   color: var(--main-red);
+  box-shadow: 0 0 0 0.12rem var(--main-red); /* Thicker box-shadow on hover */
 }
 
 /* Main div with projects display */
@@ -278,7 +272,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   order: 3; /* Ensures keywords are at the bottom */
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 .keywordTag {
@@ -288,7 +282,7 @@ a:hover {
   padding: 3px 5px;
   margin: 4px;
   /* outline: 1px solid var(--main-red); */
-  box-shadow: 0 0 0 0.06rem var(--main-red); /* Trick because Safari doesn't support border-radius and outline */
+  box-shadow: 0 0 0 0.1rem var(--main-red); /* Trick because Safari doesn't support border-radius and outline */
   display: inline-block;
 }
 
