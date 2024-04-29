@@ -22,3 +22,15 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: dist
+
+  deploy:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
