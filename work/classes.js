@@ -7,14 +7,14 @@ export class Card {
       this.title = title;
       this.titleclass = titleclass;
       this.classname = classname;
-      this.imgUrl = imgUrl;
+      this.imgUrl = `/Personal-website${imgUrl}`;
       this.tags = tags;
       this.types = types;
       this.year = year;
       this.subtitle = subtitle;
       this.paragraph = paragraph;
-      this.videoUrl = videoUrl;
-      this.bwUrl = bwUrl;
+      this.videoUrl = `/Personal-website${videoUrl}`;
+      this.bwUrl = `/Personal-website${bwUrl}`;
       this.div = document.createElement('div');
       this.div.id = id;
       this.div.className = classname;
@@ -33,7 +33,7 @@ export class Card {
   }
 
   createBackground() {
-      this.div.style.backgroundImage = `url("${this.bwUrl}")`;
+      this.div.style.backgroundImage = `url("/Personal-website${this.bwUrl}")`;
       this.div.style.backgroundSize = "cover";
       this.div.style.backgroundPosition = "center";
   }
