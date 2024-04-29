@@ -72,6 +72,24 @@ The domain is managed in Squarespace and it's setup from the DNS Settings:
 - For example: 185.199.108.153, 185.199.110.153, 185.199.111.153, and 185.199.109.153.
 - It has also a “CNAME” record with host “www” to point your subdomain to <user>.github.io.
 
+## Projects
+### Compressing Files
+Videos
+```
+ffmpeg -i <input_video> -c:v libx264 -b:v 1.5M -c:a aac -b:a 128k <output_video_name>.mp4
+```
+Images
+```
+ffmpeg -i <input_img> <output_img_name>.jpg
+```
+Images to black and white
+```
+ffmpeg -i <input_img> -vf format=gray <output_img_name>_bw.jpg
+
+```
+
+### Data JSON
+Add the images and videos in the assets folder and update projects in `data.json` under `/public` folder. 
 
 
 
