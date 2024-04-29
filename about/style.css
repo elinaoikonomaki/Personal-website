@@ -12,25 +12,19 @@
   --section-title: #bec0d3; 
 }
 
-
-
-*{
+body{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  
-}
-body{
   font-family: 'Inconsolata', monospace;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 26px;
+  line-height: 20px;
   text-align: center;
   width: 100%;
   min-height: 100vh;
   position: relative;
-  /* background-color: #9588f7 */
   background-color: var(--secondary-background);
 }
 
@@ -46,9 +40,8 @@ body{
 }
 a:link, a:visited  {
   text-decoration: none;
-  font-family: 'Inconsolata', monospace;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 20px;
 }
 
@@ -108,6 +101,7 @@ a:hover {
   text-decoration: none; /* Removes underline from links */
   color: black; /* Initial color of icons */
   cursor: pointer;
+  margin-right: 1rem;
 }
 
 .icon-link:hover {
@@ -165,7 +159,7 @@ footer {
 .windowView {
   grid-row: 2/3;
   grid-column: 2/3;
-  outline: inset medium;
+  outline: 0.2rem solid black;
   border-top: 0;
   display: flex;
   flex-flow: column wrap;
@@ -173,6 +167,8 @@ footer {
   background-color: #ffffff;
   overflow-y: auto;
 }
+
+
 .about {
   display: flex;
   width: 100%;
@@ -196,36 +192,46 @@ footer {
 #links {
   position: relative;
   margin: 0;
-  margin-left: 1.5rem;
-  margin-top: 2rem;
+  /* margin-left: 1.5rem; */
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 #links p {
   margin: 10px;
+  text-align: left;
+  font-size: 1.1rem;
 }
 
+#icons {
+  display: flex;
+  margin: 10px;
+}
 
-h3 {
-  text-decoration: underline;
-  height: fit-content;
-  padding-top: 20px;
+.text-content h2 {
+  font-size: 25px;
+  margin: 0;
+  text-align: left;
 }
 
 .text-content {
   display: flex;
   flex-flow: column wrap-reverse; 
   width: 60%;
-  font-family: 'Inconsolata', monospace;
-  font-style: normal;
-  font-size:18px;
+  font-size:15px;
   padding-top: 30px;
-  column-gap: 15px;
-  padding-bottom: 1rem;
+  /* column-gap: 15px; */
+  padding-bottom: 0.5rem;
   overflow: scroll;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  
 }
 
 .text-content p {
   text-align: justify;
+  margin: 0;
 }
 
 .text-content ul {
@@ -280,9 +286,10 @@ li > strong {
     width: 40%;
   }
   .text-content {
-    width: auto;
+    width: 80%;
     padding-top: 2px;
-    font-size: 16px;
+    font-size: 14px;
+    margin: 0.5rem;
   }
   .displaybar{
     height: 1.5rem;
@@ -293,9 +300,10 @@ li > strong {
   }
   #links {
     position: relative;
-    margin: 1.5rem;
-    /* margin-left: 1.5rem; */
-    /* margin-top: 42rem; */
+    margin: 0.4rem;
+  }
+  #links p {
+    font-size: 0.9rem;
   }
   .logos{
     width: auto;

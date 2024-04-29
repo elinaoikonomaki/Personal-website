@@ -33,9 +33,24 @@ export class Card {
   }
 
   createBackground() {
-      this.div.style.backgroundImage = `url("${this.bwUrl}")`;
-      this.div.style.backgroundSize = "cover";
-      this.div.style.backgroundPosition = "center";
+    this.div.style.position = 'relative';
+    this.div.style.backgroundImage = `url("${this.bwUrl}")`;
+    this.div.style.backgroundSize = "cover";
+    this.div.style.backgroundPosition = "center";
+
+    // Create a div for the overlay
+    let overlay = document.createElement('div');
+    overlay.style.position = 'absolute';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.background = 'rgba(0, 0, 0, 0)';
+    overlay.style.transition = 'background-color 0.2s ease';
+    overlay.style.zIndex = '10'
+    overlay.className = 'overlay';
+
+    this.div.appendChild(overlay);
   }
 
   createTitle() {
@@ -44,6 +59,7 @@ export class Card {
       title.className = `cardText ${this.titleclass}`;
       title.style.opacity = '0'; // Initially invisible
       title.style.transition = 'opacity 0.5s ease';
+      title.style.zIndex = '20'; 
       this.div.appendChild(title);
   }
 
@@ -53,6 +69,7 @@ export class Card {
       subtitle.className = 'cardText cardSubtitle';
       subtitle.style.opacity = '0'; // Initially hidden
       subtitle.style.transition = 'opacity 0.5s ease';
+      subtitle.style.zIndex = '20'; 
       this.div.appendChild(subtitle);
   }
 
@@ -61,6 +78,7 @@ export class Card {
       keywordsContainer.className = 'cardText cardKeywords';
       keywordsContainer.style.opacity = '0'; // Initially hidden
       keywordsContainer.style.transition = 'opacity 0.5s ease';
+      keywordsContainer.style.zIndex = '20';
       this.tags.forEach(tag => {
           let keyword = document.createElement('span');
           keyword.textContent = tag;
@@ -78,16 +96,16 @@ export class Card {
   }
 
   mouseOver(e) {
-      this.div.style.backgroundImage = `url("${this.imgUrl}")`;
-      this.div.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
-      this.div.style.backgroundBlendMode = 'multiply';
+    this.div.style.backgroundImage = `url("${this.imgUrl}")`;
+      this.div.querySelector('.overlay').style.background = 'rgba(0, 0, 0, 0.85)';
       this.div.querySelectorAll('.cardText').forEach(el => el.style.opacity = '1');
+
   }
 
   mouseOut(e) {
-      this.div.style.backgroundImage = `url("${this.bwUrl}")`;
-      this.div.style.backgroundColor = 'transparent';
-      this.div.querySelectorAll('.cardText').forEach(el => el.style.opacity = '0');
+    this.div.style.backgroundImage = `url("${this.bwUrl}")`;
+    this.div.querySelector('.overlay').style.background = 'rgba(0, 0, 0, 0)';
+    this.div.querySelectorAll('.cardText').forEach(el => el.style.opacity = '0');
   }
 
   onClick(e) {
