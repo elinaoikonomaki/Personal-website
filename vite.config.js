@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
-import path from 'path'; // Import path module from Node.js
+import path from 'path';
 
 export default defineConfig({
-  base: '/Personal-website/',
+  base: '/', // Set this to the root since you are using a custom domain
   build: {
     rollupOptions: {
       input: {
@@ -12,4 +12,4 @@ export default defineConfig({
       }
     }
   }
-});
+});;
