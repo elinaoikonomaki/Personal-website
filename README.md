@@ -5,12 +5,12 @@
 ## Local Development
 ### Dependecies
 Developer dependecies:
-- node
-- vite
-- gh-pages
+- [node](https://nodejs.org/)
+- [vite](https://vitejs.dev/)
+- [gh-pages](https://www.npmjs.com/package/gh-pages) - Node.js command line tool to publish files to a gh-pages branch on GitHub.
 
 Project depedencies:
-- three
+- [three](https://threejs.org/) - For rendering 3d models in the landing page.
 
 
 ### Install Dependecies 
