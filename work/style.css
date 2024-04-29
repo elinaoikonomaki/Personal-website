@@ -176,13 +176,15 @@ a:hover {
   background-color: transparent;
   padding: 0.3rem;
   border-radius: 0.4rem ;
-  outline: 0.01rem solid var(--secondary-light-blue);
+  /* outline: 0.01rem solid var(--secondary-light-blue); */
+  box-shadow: 0 0 0 0.06rem var(--secondary-light-blue); /* Trick because Safari doesn't support border-radius and outline */
   margin: 0.3rem;
   cursor:pointer;
 }
 .filterbtn:hover {
   color: var(--main-red);
-  outline: 0.2rem solid var(--main-red);
+  /* outline: 0.2rem solid var(--main-red); */
+  box-shadow: 0 0 0 0.2rem var(--main-red); /* Trick because Safari doesn't support border-radius and outline */
 }
 
 .active {
@@ -278,10 +280,11 @@ a:hover {
 .keywordTag {
   background-color: transparent; /* Customize color as needed */
   color: var(--main-red);
-  border-radius: 10px;
+  border-radius: 0.4rem;
   padding: 3px 5px;
   margin: 4px;
-  outline: 1px solid var(--main-red);
+  /* outline: 1px solid var(--main-red); */
+  box-shadow: 0 0 0 0.06rem var(--main-red); /* Trick because Safari doesn't support border-radius and outline */
   display: inline-block;
 }
 
