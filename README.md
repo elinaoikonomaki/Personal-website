@@ -64,7 +64,7 @@ export default defineConfig({
 
 If you change the base: to your repo name, you should also ensure that the urls in your html files and in the classes.js are correct. You would need to add the `</repo_name/>` similarly to how you add it in the `vite.config.js`.
 
-### Domain
+### Domain Configuration
 The domain is managed in Squarespace and it's setup from the DNS Settings:
 
 - It has an “A” record with host “@” for each GitHub Pages IP address. 
