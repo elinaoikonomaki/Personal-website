@@ -1,3 +1,7 @@
+## To Do's
+- Add a card layout to support projects that are blogs with images instead of video. 
+- Add more projects from design and architecture. 
+
 ## Local Development
 ### Dependecies
 Developer dependecies:
