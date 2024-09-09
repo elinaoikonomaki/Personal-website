@@ -40,18 +40,9 @@
         "bwImg":"/assets/img/h3_bw.jpg",
         "year":"2023"
       },
-    { "name": "Point-cloud Soundscape Clusters",
-      "subtitle":"A data visualization tool for data exploration",
-      "type":["Full-Stack", "Data Visualization"],
-      "tags": ["Javascript","WebGL","D3","Pandas","Python","Scikit-learn"],
-      "description": "Research project (thesis) supervised by Arvind Satyanarayan & Terry Knight. Studied the impact of COVID-19 on urban environments through sound. Analyzed audio & geospatial data to extract geo-sound clusters using Python, Machine Learning (Scikit-learn), UMAP & Matplotlib. Developed a notational language to visualize urban sound clusters & prototyped an interactive web interface using Javascript, D3 & WebGL.",
-      "video":"/assets/video/umap_2.m4v",
-      "img":"/assets/img/Umap_final.jpg",
-      "bwImg":"/assets/img/Umap_final_bw.jpg",
-      "year":"2022"
-    },
-    { "name": "Visualizing Multimodal Learning",
-      "subtitle":"Explaining Deep Learning with Data Visualization",
+    
+    { "name": "Multimodal Learning",
+      "subtitle":"Project in Deep Learning Seminar",
       "type":["Data Visualization","Machine Learning"],
       "tags": ["Javascript","Python", "Tensorflow"],
       "description": "This project was developed as part of my final project for the Fall 2021 Deep Learning class that I took at MIT. I developed an interactive data visualization for A.Owens and A.Efros(2018) paper on audio-visual scene analysis. I experimented and tested their model on different inputs from the Google AudioSet and produced a blog to bring new insight and help explain the proposed machine learning model.",
@@ -59,36 +50,7 @@
       "img":"/assets/img/ml2.jpg",
       "bwImg":"/assets/img/ml2_bw.jpg",
       "year":"2021"
-    },
-    { "name": "Mapping the walking route",
-      "subtitle":"Using machine learning to visualize sound events along a route",
-      "type":["Full-Stack", "Data Analysis","Data Visualization", "Machine Learning"],
-      "tags": ["Javascript","Python", "Mapbox"],
-      "description": "This research combines geolocation data from GPS and audio data to study how different sounds affect the walking experience. The visualization combines two different representations methods to show the correlation between the sound events and the walking pace. Yamnet, a ML model was used to perform sound classification on the audio data. This project was developed as part of the Interactive Data Visualization class in the Spring of 2021, and it served as an initial prototype for my thesis.",
-      "video":"/assets/video/mapping.m4v",
-      "img":"/assets/img/mapbox.jpg",
-      "bwImg":"/assets/img/mapbox_bw.jpg",
-      "year":"2020"
-    },
-    { "name": "Atlas of Telecommunication Technology",
-      "subtitle":"Visualizing trends in communication technology in the 20th century",
-      "type":["Data Visualization"],
-      "tags": ["Javascript","D3","Python"],
-      "description": "An interactive data visualization that shows how trends manifest throughout communications technology in the 20th century. Innovations such as the telephone, TV, and internet permanently change global communication, and adoption of novel technology is very disproportionate between countries. Throughout the history of technology adoption documented in this dataset, a country's GDP is strongly correlated with how quickly it is able to adopt its use of a technology per capita. This project was developed as part of the Interactive Data Visualization class at MIT.",
-      "video":"/assets/video/atlas.m4v",
-      "img":"/assets/img/atlas.jpg",
-      "bwImg":"/assets/img/atlas_bw.jpg",
-      "year":"2020"
-    },
-    { "name": "Soundscapes as Urban Transformation",
-      "subtitle":"Introducing a notational language that represents the shifting relationships between sound, space, and movement",
-      "type":["Full-Stack", "Data Visualization", "Machine Learning", "Data Analysis"],
-      "tags": ["Javascript","Python", "Scikit-learn","p5"],
-      "description": "Research project (thesis) supervised by Arvind Satyanarayan & Terry Knight. Studied the impact of COVID-19 on urban environments through sound. Analyzed audio & geospatial data to extract geo-sound clusters using Python, Machine Learning (Scikit-learn), UMAP & Matplotlib. Developed a notational language to visualize urban sound clusters & prototyped an interactive web interface using Javascript, D3 & WebGL",
-      "video":"/assets/video/phases_comp.m4v",
-      "img":"/assets/img/phases_comp.jpg",
-      "bwImg":"/assets/img/phases_comp_bw.jpg",
-      "year":"2022"
     }
+   
  ]
 }
