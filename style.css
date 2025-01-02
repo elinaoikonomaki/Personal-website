@@ -80,8 +80,8 @@ body {
 }
 
 h1 {
-  font-size: 1.1rem;
-  color: white;
+  font-size: 1.5rem;
+  color: var(--secondary-background);
   margin-bottom: 5px;
   transform: translateY(150px);
   animation: slideUp .10s ease forwards .15s;
@@ -94,11 +94,12 @@ h1 {
   font-size: 0.9rem;
   text-align: justify;
   z-index: 10;
-  color: white;
+  color: var(--secondary-background);
 }
 
 p{
   line-height: 20px;
+  font-size: 1.2rem;
   transform: translateY(500px);
   animation: slideUp .20s ease-in-out forwards .25s;
   animation-delay: 1s;
@@ -123,7 +124,7 @@ p{
   color: var(--secondary-light-blue);
   padding: 0.3rem;
   transform: translateY(100vh); /* Start below the viewable area */
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   animation: slideUp 0.40s ease forwards 3s; /* Consolidated the delay into the shorthand */
   transition: color 0.3s; /* Ensure color transition is smooth */

@@ -1,8 +1,24 @@
-import { createPar } from "./selectors.js";
+import { createPar, createH4 } from "./selectors.js";
 import {onCardClick} from "./expandableCard.js";
+import { recalcWidths } from "./script.js";
 
 export class Card {
-  constructor(id, classname, title, titleclass, imgUrl, tags, types, year, subtitle, paragraph, videoUrl, bwUrl) {
+    constructor(
+        id,
+        classname,
+        title,
+        titleclass,
+        imgUrl,
+        tags,
+        types,
+        year,
+        subtitle,
+        paragraph,
+        videoUrl,
+        bwUrl,
+        blogItems,
+        hasVideo
+      ) {
       this.id = id;
       this.title = title;
       this.titleclass = titleclass;
@@ -15,6 +31,8 @@ export class Card {
       this.paragraph = paragraph;
       this.videoUrl = `${videoUrl}`;
       this.bwUrl = `${bwUrl}`;
+      this.blogItems = blogItems;
+      this.hasVideo = hasVideo;
       this.div = document.createElement('div');
       this.div.id = id;
       this.div.className = classname;
@@ -27,49 +45,78 @@ export class Card {
   setupCard() {
       this.createBackground();
       this.createTitle();
-      this.createSubtitle();
-      this.createKeywords();
+      this.createCardContent();
+    //   this.createSubtitle();
+    //   this.createKeywords();
       this.setupInteractions();
+    //   this.createCardContent();
   }
 
   createBackground() {
     this.div.style.position = 'relative';
-    this.div.style.backgroundImage = `url("${this.bwUrl}")`;
-    this.div.style.backgroundSize = "cover";
-    this.div.style.backgroundPosition = "center";
-
-    // Create a div for the overlay
-    let overlay = document.createElement('div');
-    overlay.style.position = 'absolute';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.background = 'rgba(0, 0, 0, 0)';
-    overlay.style.transition = 'background-color 0.2s ease';
-    overlay.style.zIndex = '10'
-    overlay.className = 'overlay';
-
-    this.div.appendChild(overlay);
+    this.div.style.background = 'rgba(255, 255, 255, 1)';
+    this.div.style.transition = 'background-color 0.2s ease';
   }
 
   createTitle() {
-      let title = createPar();
+      let title = createH4();
       title.textContent = this.title;
-      title.className = `cardText ${this.titleclass}`;
-      title.style.opacity = '0'; // Initially invisible
-      title.style.transition = 'opacity 0.5s ease';
-      title.style.zIndex = '20'; 
       this.div.appendChild(title);
+  }
+
+  createCardContent() {
+    // Build your HTML snippet (like you did in getCardContent)
+    const blogContent = Array.isArray(this.blogItems) && this.blogItems.length > 0
+      ? this.blogItems.map(
+          (b) => `
+            <p>${b.text}</p>
+            <img src="${b.imgUrl}" alt="Blog Image">
+          `
+        ).join('')
+      : '';
+
+    const previewContent = this.hasVideo
+      ? `<video muted controls><source src="${this.videoUrl}" type="video/mp4"></video>`
+      : `<img src="${this.imgUrl}" alt="Preview">`;
+
+    // Create wrapper element
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'card-content';
+    // By default, let it be hidden in CSS, or do inline style:
+    // contentDiv.style.display = 'none';
+
+    contentDiv.innerHTML = `
+      <div class="header">
+        <h1>${this.title}</h1>
+        <h2>${this.subtitle}</h2>
+      </div>
+      ${previewContent}
+      <div class="wrapper">
+        <div class="info">
+          <h3> Keywords </h3>
+          <p>${this.tags.concat(this.types).join(', ')}</p>
+          <h3> Year </h3>
+          <p>${this.year}</p>
+        </div>
+        <div class="dec">
+          <h3> Short Description </h3>
+          <p>${this.paragraph}</p>
+          ${blogContent}
+        </div>
+      </div>
+    `;
+
+    // Append to the card div
+    this.div.appendChild(contentDiv);
   }
 
   createSubtitle() {
       let subtitle = createPar();
       subtitle.textContent = this.subtitle;
-      subtitle.className = 'cardText cardSubtitle';
-      subtitle.style.opacity = '0'; // Initially hidden
-      subtitle.style.transition = 'opacity 0.5s ease';
-      subtitle.style.zIndex = '20'; 
+    //   subtitle.className = 'cardText cardSubtitle';
+    //   subtitle.style.opacity = '0'; // Initially hidden
+    //   subtitle.style.transition = 'opacity 0.5s ease';
+    //   subtitle.style.zIndex = '20'; 
       this.div.appendChild(subtitle);
   }
 
@@ -78,7 +125,7 @@ export class Card {
       keywordsContainer.className = 'cardText cardKeywords';
       keywordsContainer.style.opacity = '0'; // Initially hidden
       keywordsContainer.style.transition = 'opacity 0.5s ease';
-      keywordsContainer.style.zIndex = '20';
+    //   keywordsContainer.style.zIndex = '20';
       this.tags.forEach(tag => {
           let keyword = document.createElement('span');
           keyword.textContent = tag;
@@ -90,25 +137,34 @@ export class Card {
   }
 
   setupInteractions() {
-      this.div.addEventListener('mouseenter', this.mouseOver.bind(this));
-      this.div.addEventListener('mouseleave', this.mouseOut.bind(this));
+    //   this.div.addEventListener('mouseenter', this.mouseOver.bind(this));
+    //   this.div.addEventListener('mouseleave', this.mouseOut.bind(this));
       this.div.addEventListener('click', this.onClick.bind(this));
   }
 
   mouseOver(e) {
     this.div.style.backgroundImage = `url("${this.imgUrl}")`;
-      this.div.querySelector('.overlay').style.background = 'rgba(0, 0, 0, 0.85)';
-      this.div.querySelectorAll('.cardText').forEach(el => el.style.opacity = '1');
+    this.div.querySelector('.card').style.background = 'rgba(0, 0, 0, 0.85)';
+    this.div.querySelectorAll('.cardText').forEach(el => el.style.opacity = '1');
 
   }
 
   mouseOut(e) {
     this.div.style.backgroundImage = `url("${this.bwUrl}")`;
-    this.div.querySelector('.overlay').style.background = 'rgba(0, 0, 0, 0)';
+    this.div.querySelector('.card').style.background = 'rgba(0, 0, 0, 0)';
     this.div.querySelectorAll('.cardText').forEach(el => el.style.opacity = '0');
   }
 
   onClick(e) {
-      setTimeout(() => onCardClick(this.div, this.title, this.videoUrl, this.imgUrl, this.paragraph, this.tags.concat(this.types).join(', '), this.subtitle, this.year), 500);
+    const panels = document.querySelectorAll(".panel");
+    // If hidden, ignore
+    if (this.div.classList.contains("hidden")) return;
+
+    // Remove expanded from all
+    panels.forEach((p) => p.classList.remove("expanded"));
+    // Expand this
+    this.div.classList.add("expanded");
+
+    recalcWidths(); // re-calc after expansion
   }
 }

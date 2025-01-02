@@ -1,144 +1,75 @@
-import { createBtn } from "./selectors.js";
-
-export function onCardClick(el,title,videoUrl, imgUrl, paragraph, keywords, subtitle, year) {
-  console.log(year)
-
-  //get the clicked card
-  const card = el;
-  //clone the card
-  const cardClone = card.cloneNode(false);
-  //get the location of the card in the window
-  var { top, left, width, height } = card.getBoundingClientRect();
-  //positioning the clone on top of the original card
-  cardClone.className = 'cardClone';
-  cardClone.style.position = 'fixed';
-  cardClone.style.top = top + 'px';
-  cardClone.style.left = left + 'px';
-  cardClone.style.width = width + 'px';
-  cardClone.style.height = height + 'px';
-  // hide the original card with opacity
-  card.style.opacity = '0';
-  // add card to the same container
-  card.parentNode.appendChild(cardClone);
-
-  //adding close button for each div
-  let btn = closeBtn(cardClone, card, top, left, width, height);
-  // expand the clone card
-  var { top, left, width, height } = card.parentNode.getBoundingClientRect();
-  toggleExpansion(cardClone, {
-    top: `${top}px`,
-    left: `${left}px`,
-    width: `${width}px`,
-    height: `${height}px`,
-  });
-  
-  const content = getCardContent(title, videoUrl, imgUrl, paragraph, keywords, subtitle, year);
-  // set the display block so the content will follow the normal flow in case the original card is not display block
-  cardClone.style.display = 'block';
-  cardClone.style.padding = '0';
-  // append the close button after the expansion is done
-  cardClone.appendChild(btn);
-  cardClone.insertAdjacentHTML('afterbegin', content);
-}
-
-function closeBtn(cardClone, card, top, left, width, height){
-  let btn = createBtn();
-  btn.innerText = 'x';
-  btn.setAttribute('class', 'closebtn');
-  cardClone.appendChild(btn);
-  btn.addEventListener('click', (e) =>
-    setTimeout(
-      closeCard(e.target, cardClone, card, top, left, width, height),
-      500
-    )
-  );
-  return btn;
-}
-
-function closeCard(btn, cardClone, card, top, left, width, height) {
-  // remove the button on close
-  btn.remove();
-  //remove the clone div & its content
-  cardClone.style.removeProperty('display');
-  cardClone.style.removeProperty('padding');
-  // show original card content
-  [...cardClone.children].forEach((child) =>
-    child.style.removeProperty('display')
-  );
-  fadeContent(cardClone, '0');
-  // shrink the card back to the original position and size
-  toggleExpansion(
-    cardClone,
-    {
-      top: `${top}px`,
-      left: `${left}px`,
-      width: `${width}px`,
-      height: `${height}px`,
-    },
-    300
-  );
-  // show the original card again
-  card.style.removeProperty('opacity');
-  // remove the clone card
-  cardClone.remove();
-  // fade the content away
-  fadeContent(cardClone, '0').then(() => {
-    [...cardClone.children].forEach((child) => (child.style.display = 'none'));
-  });
-};
-
-const toggleExpansion = (element, to, duration = 350) => {
-  return new Promise((res) => {
-    element.animate(
-      [
-        {
-          top: to.top,
-          left: to.left,
-          width: to.width,
-          height: to.height,
-        },
-      ],
-      { duration, fill: 'forwards', ease: 'ease-in' }
+export function onCardClick(
+  el,
+  title,
+  videoUrl,
+  imgUrl,
+  paragraph,
+  keywords,
+  subtitle,
+  year,
+  blogItems,
+  hasVideo
+) {
+  // Here, we insert .card-content if it’s not there or hidden
+  const child = el.querySelector('.card-content');
+  if (!child || child.style.display === 'none') {
+    const content = getCardContent(
+      title,
+      videoUrl,
+      imgUrl,
+      paragraph,
+      keywords,
+      subtitle,
+      year,
+      blogItems,
+      hasVideo
     );
-    setTimeout(res, duration);
-  });
-};
+    el.insertAdjacentHTML('afterbegin', content);
+  }
+}
 
-const fadeContent = (element, opacity, duration = 300) => {
-  return new Promise((res) => {
-    [...element.children].forEach((child) => {
-      requestAnimationFrame(() => {
-        child.style.transition = `opacity ${duration}ms linear`;
-        child.style.opacity = opacity;
-      });
-    });
-    setTimeout(res, duration);
-  });
-};
+const getCardContent = (
+  title,
+  videoUrl,
+  imgUrl,
+  paragraph,
+  keywords,
+  subtitle,
+  year,
+  blogItems,
+  hasVideo
+) => {
+  const blogContent = Array.isArray(blogItems) && blogItems.length > 0
+    ? blogItems.map((b) => `
+        <p>${b.text}</p>
+        <img src="${b.imgUrl}" alt="Blog Image">
+      `).join('')
+    : '';
 
-const getCardContent = (title,videoUrl,imgUrl, paragraph, keywords, subtitle,year) => {
- 
+  const previewContent = hasVideo
+    ? `<video muted controls><source src="${videoUrl}" type="video/mp4">Browser does not support the video tag.</video>`
+    : `<img src="${imgUrl}" alt="Preview">`;
+
   return `
     <div class="card-content">
       <div class="header">
         <h1>${title}</h1>
         <h2>${subtitle}</h2>
       </div>
-      <video autoplay muted controls> 
-        <source src= ${videoUrl} type="video/mp4">
-      </video>
-     <div class= "wrapper"> 
-        <div class="info ">
+      ${previewContent}
+      <div class="wrapper">
+        <div class="info">
           <h3> Keywords </h3>
-          <p> ${keywords} </p>
+          <p>${keywords}</p>
           <h3> Year </h3>
-          <p> ${year} </p>
+          <p>${year}</p>
         </div>
-        <div class="info dec">
+        <div class="dec">
           <h3> Short Description </h3>
-          <p> ${paragraph}</p>
+          <p>${paragraph}</p>
+          ${blogContent}
         </div>
       </div>
-   
     </div>
-  `};
+  `;
+};

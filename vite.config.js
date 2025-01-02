@@ -11,5 +11,8 @@ export default defineConfig({
         work: path.resolve(__dirname, 'work/index.html') // path for the work page
       }
     }
+  },
+  server: {
+    hmr: false
   }
 });;

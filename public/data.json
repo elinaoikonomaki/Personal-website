@@ -1,5 +1,16 @@
 {
  "projects":[
+  { "name": "Travel Allocation of Multiple Student Groups in Paris",
+        "subtitle":"A prototype interface for visualizing how Mobi's algorithm builds itineraries for groups of students in Paris.",
+        "type":[ "Data Visualization"],
+        "tags": ["React","WebGL","Typescript","Mapbox"],
+        "description": "An interactive visualization prototype that visualizes how our constraint programming algorithm can allocate and distribute student groups across multiple days in Paris. The design shows the different scenarios, how Mobi's algorithm meets the constraints and the itineraries along a week travel.",
+        "video":"/assets/video/ef-viz.mp4",
+        "img":"/assets/img/ef-viz.jpg",
+        "bwImg":"/assets/img/ef-viz_bw.jpg",
+        "year":"2024",
+        "hasVideo": true
+      },
     { "name": "Global Disasters 1989-2018",
         "subtitle":"Visualizing the density and impact of natural disasters and conflicts around the world over time.",
         "type":["Full-Stack", "Data Visualization"],
@@ -8,18 +19,11 @@
         "video":"/assets/video/disasters.mp4",
         "img":"/assets/img/disasters.jpg",
         "bwImg":"/assets/img/disasters_bw.jpg",
-        "year":"2023"
+        "year":"2023",
+        "blogItems": [],
+        "hasVideo": true
       },
-      { "name": "Travel Allocation of Multiple Student Groups in Paris",
-        "subtitle":"A prototype interface for visualizing how Mobi's algorithm builds itineraries for groups of students in Paris.",
-        "type":[ "Data Visualization"],
-        "tags": ["React","WebGL","Typescript","Mapbox"],
-        "description": "An interactive visualization prototype that visualizes how our constraint programming algorithm can allocate and distribute student groups across multiple days in Paris. The design shows the different scenarios, how Mobi's algorithm meets the constraints and the itineraries along a week travel.",
-        "video":"/assets/video/ef-viz.mp4",
-        "img":"/assets/img/ef-viz.jpg",
-        "bwImg":"/assets/img/ef-viz_bw.jpg",
-        "year":"2024"
-      },
+      
     { "name": "Climate Data in Travel Exploration",
         "subtitle":"A storytelling example of how Mobi in incorporating temporal climate parameters in offering travel plans.",
         "type":[ "Data Visualization"],
@@ -28,7 +32,8 @@
         "video":"/assets/video/coral_reef.mp4",
         "img":"/assets/img/coral_reef.jpg",
         "bwImg":"/assets/img/coral_reef_bw.jpg",
-        "year":"2023"
+        "year":"2023",
+        "hasVideo": true
       },
       { "name": "Global Region Ranking by User Preferences",
         "subtitle":"An internal data visualization tool for data exploration",
@@ -38,7 +43,8 @@
         "video":"/assets/video/h3.mp4",
         "img":"/assets/img/h3.jpg",
         "bwImg":"/assets/img/h3_bw.jpg",
-        "year":"2023"
+        "year":"2023",
+        "hasVideo": true
       },
     
     { "name": "Multimodal Learning",
@@ -49,8 +55,21 @@
       "video":"/assets/video/multimodal_learning.m4v",
       "img":"/assets/img/ml2.jpg",
       "bwImg":"/assets/img/ml2_bw.jpg",
-      "year":"2021"
-    }
-   
+      "year":"2021",
+      "hasVideo": true
+    },
+    { "name": "Soundscapes as Urban Transformation",
+    "subtitle":"Introducing a notational language that represents the shifting relationships between sound, space, and movement",
+    "type":["Full-Stack", "Data Visualization", "Machine Learning"],
+    "tags": ["Javascript","Python", "Scikit-learn","p5"],
+    "description": "Research project (thesis) with committee: Terry Knight, George Stiny, Arvind Satyanarayan, and Andres Sevtsuk. Studied the impact of COVID-19 on urban environments through sound. Analyzed audio & geospatial data to extract geo-sound clusters using Python, Machine Learning (Scikit-learn), UMAP & Matplotlib. Developed a notational language to visualize urban sound clusters & prototyped an interactive web interface using Javascript, D3 & WebGL",
+    "video":"/assets/video/phases_comp.m4v",
+    "img":"/assets/img/phases_comp.jpg",
+    "bwImg":"/assets/img/phases_comp_bw.jpg",
+    "year":"2022",
+    "hasVideo": false
+
+  }
+    
  ]
 }

@@ -1,63 +1,74 @@
 :root {
   --main-background-color: #494e84;
+  --main-bright-background-color: #fbfbfb;
   --main-light-blue: 	#74afda;
   --main-red: #dd164c;
   --main-yellow: #da9100;
   --main-cyan: #00a693;
   --secondary-background: #292f6d;
   --secondary-yellow: #ff9527;
-  --secondary-light-blue: #9497B6;
+  --secondary-light-blue: #8588a6; /* #9497B6*/
   --pages-selected: #dd164c;
-  --pages-unselected: #bec0d3;
-  --section-title: #bec0d3;
-  
-  
+  --pages-unselected: #8588a6; /* #bec0d3;*/
+  --section-title: #8588a6;
+  --body-text-color: #494e84;
+  --title-text-color:#292f6d;
+  --subtitle-text-color:#292f6d;
+  --filters-default: #8588a6;
+  --filters-selected: #494e84;
+
 }
-*{
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'Inconsolata', monospace;
+  font-family: "IBM Plex Sans", serif;
+  font-weight: 400;
   font-style: normal;
   line-height: 26px;
-  font-weight: 400;
-  text-align: center;
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-color: var(--secondary-background);
+  overflow-x: hidden; 
+  background-color: var(--main-bright-background-color);
 }
 
 /* page layout*/
 #container {
   position: absolute;
   display: grid;
-  grid-template-columns: 0.5fr 4.5fr 1fr;
+  grid-template-columns: 1fr 4.5fr 1fr;
   grid-template-rows: minmax(30px, auto) 1fr minmax(30px, auto); /* add auto otherwise the grid would move if the windowView container changes*/
   gap: 1rem;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 footer {
-  grid-area: 3/2/3/3;
+  grid-area: 3/1/3/2;
   position: relative;
   width: 100%;
   color: var(--secondary-light-blue); /* Light text color */
-  text-align: center; /* Centers the footer content */
-  font-size: 12px;
+  text-align: left; /* Centers the footer content */
+  font-size: 10px;
+  margin-left: 20px;
   
 }
 
 .footer-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .footer-content i {
@@ -96,6 +107,7 @@ a:hover {
   margin-right: 10px;
   margin-bottom: 20px;
   position: relative;
+  font-family: "Barlow", serif;
 }
 
 .selected::after {
@@ -123,46 +135,27 @@ a:hover {
   }
 }
 
-
-
-.item-3 {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  justify-self: end;
-  align-self: start;
-}
-
-.item-4 {
-  grid-area: 3/1/4/2;
-  align-self: end;
-  justify-self: start;
-}
-.item-2 {
-  grid-area: 3/3/4/4;
-  justify-self: end;
-  align-self: end;
-}
-
 /* filterbox */
 .filterbox {
+  position: relative;
   box-sizing: border-box;
-  grid-area: 2 / 3 / 3/ auto;
+  /* grid-area: 2 / 3 / 3/ auto; */
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-content: flex-start;
   flex-basis: 2em;
   margin-left: 1em;
+  min-height: 300px;
 }
 .filterbox p {
   font-size: 1.1rem;
   text-align: justify;
   margin: 0.2rem;
   margin-bottom: 0.1rem;
+  font-family: "Barlow", serif;
   font-weight: 400;
-  color: var(--section-title);
+  color: var(--subtitle-text-color);
 }
 
 .filters {
@@ -172,10 +165,59 @@ a:hover {
   justify-content: flex-start;
 }
 
-.filterbtn {
+#pyear {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.2rem;
+  padding-left: 1.5rem;
+}
+
+#slider {
+  width: 90%;
+  height: 8px;
+}
+#slider .noUi-tooltip {
+  font-size: 14px;
+  border: none;
+  background: none;
+  bottom: 70%;
+  color: var(--filters-default);
+}
+
+#slider .noUi-tooltip:active {
+  color: var(--filters-selected);
+}
+
+#slider .noUi-connect {
+  background: var(--filters-default);
+}
+
+#slider .noUi-handle {
+  height: 16px;
+  width: 16px;
+  top: -5px;
+  right: -8px; /* half the width */
+  border-radius: 8px;
+  cursor: pointer;
+  border-color: var(--filters-selected);
+}
+
+#slider .noUi-handle:hover {
+  border-width: 2px;
+  /* box-shadow: 4px 4px 2px var(); */
+}
+#slider .noUi-handle:focus {
+  border-width: 2px;
+  /* box-shadow: 4px 4px 2px var(); */
+}
+
+/* Type chips */
+.type-chip {
+  display: inline-flex;
+  align-items: center;
   border: none; /* No border to affect sizing */
   font-size: 0.9rem;
-  color: var(--secondary-light-blue);
+  color: var(--filters-default);
   background-color: transparent;
   padding: 0.3rem; /* Maintain consistent padding */
   border-radius: 0.5rem;
@@ -184,66 +226,153 @@ a:hover {
   transition: color 0.3s, box-shadow 0.3s; /* Smooth transition for color and box-shadow */
   box-shadow: 0 0 0 0.08rem  #9497b682; /* Initial box-shadow as outline */
 }
+.type-chip:hover {
+  color: var(--filters-selected);
+  box-shadow: 0 0 0 0.12rem var(--filters-selected);;
+}
+.chip-label {
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+.chip-close {
+  font-weight: bold;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+}
 
-.filterbtn:hover, .active {
-  color: var(--main-red);
-  box-shadow: 0 0 0 0.12rem var(--main-red); /* Thicker box-shadow on hover */
+.active-chip {
+  color: var(--filters-selected);;
+  box-shadow: 0 0 0 0.12rem var(--filters-selected);;
+}
+.active-chip .chip-close {
+  opacity: 1;
+  color: var(--filters-selected);;
 }
 
 /* Main div with projects display */
 .windowView {
-  grid-row: 2/3;
-  grid-column: 2/3;
-  display: flex;
-  flex-flow: row wrap;
-  overflow: hidden;
-  column-gap: 0.5rem;
-  border-radius: 5px;
-  justify-content: space-around; 
-  align-items: stretch;
-  margin: 0.5rem;
-}
-
-.card {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  padding: 1rem;
-  overflow: hidden;
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.85);
+  grid-row: 2/4;
+  grid-column: 2/4;
+  display: flex; 
+  flex-direction: row;
+  width: 100%;
   height: 100%;
-  width: 5%;
-  flex-grow: 0;  
-  transition-property: flex-grow; 
-  transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
+  overflow: auto; 
+  justify-content: left; 
+  align-items: end;
+  margin: 0.5rem;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0;
   
 }
 
-.card.visible {
-  flex-grow: 1;  /* Set flex-grow to 1 for visible cards */
-  opacity: 1;
+/* Panel styles */
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  color: #fff;
+  border: 1px solid var(--main-background-color);
+  height: 95%;
+  
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1);
+  
+  /* Smooth transitions for when widths & opacity change */
+  transition:
+    flex-basis 1s ease,
+    opacity 1s ease,
+    transform 1s ease;
+  overflow: hidden; /* In case we shrink it, hide any overflow */
 }
 
-.card.hidden {
-  flex-grow: 0;  /* Keep flex-grow at 0 for hidden cards */
+/* Let's keep using `.expanded` for styling but NOT for fixed width. */
+.panel.expanded {
+  /* No fixed width here, the JS will set widths dynamically. */
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: auto; /* ensure scrolling is enabled */
+  z-index: 2;
+  transform: translateY(-10px) scale(1.01);
+ 
+}
+
+.panel:not(.expanded):hover {
+  transform: translateY(-30px);
+  transform: translateY(-30px) scale(1.03);
+  z-index: 3;
+  cursor: pointer;
+  box-shadow: -8px 8px 5px rgba(0, 0, 0, 0.1);
+  
+}
+
+.panel:not(.expanded):hover h4 {
+  font-family: "Barlow", serif;
+  font-weight: 600;
+}
+
+/* 
+  For non-expanded panels, rotate the <h1> 
+  so that it appears vertically at bottom-left
+*/
+.panel:not(.expanded) h4 {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  font-size: 1.1rem;
+  font-family: "Barlow", serif;
+  font-weight: 400;
+  text-align: left;
+  white-space: nowrap;
+  color:var(--subtitle-text-color);
+}
+
+/* For the expanded panel, show the title horizontally again */
+.panel.expanded h4 {
+  display:none;
+  position: relative;
+  transform: none;
+  font-size: 2rem;
+  color:var(--subtitle-text-color);
+}
+
+/* Hide the <p> text when NOT expanded */
+.panel:not(.expanded) .card-content {
+  display: none;
+}
+
+.panel:not(.expanded) .card-content {
+  display: none;
+}
+.panel.expanded .card-content {
+  display: block; /* or flex, up to you */
+}
+/* 
+  Hidden panels: we keep them at 0% width
+  so they don't consume space, but remain in DOM 
+*/
+.panel.hidden {
+  flex-basis: 0 !important;
   opacity: 0;
-  width: 0;
-}
-
-.card:hover {
-  flex-grow: 10;
-  border: 4px solid var(--main-red);
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Base styles for positioning text elements within the card, adjusted for flexbox */
 .cardText {
-  width: 100%;
+  height: 100%;
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
@@ -252,18 +381,24 @@ a:hover {
   white-space: normal;
   transition: opacity 1.5s ease;
   opacity: 0;
-  color: white;
+  color: var(--body-text-color);
 }
 
 /* Specific styles for title, subtitle, and keywords */
 .cardTitle {
+  font-family: "Barlow", serif;
   font-size: 1.5em;
   order: 1; /* Ensures title is at the top */
+  color: var(--subtitle-text-color);
+  writing-mode: vertical-rl;
+  text-align: start;
+
 }
 
 .cardSubtitle {
   font-size: 1em;
   order: 2; /* Ensures subtitle is below title */
+  
 }
 
 .cardKeywords {
@@ -288,7 +423,8 @@ a:hover {
 
 .cardClone {
   display: block;
-  box-shadow:12px 12px black;
+  border: 1px solid #2d2d2d;
+  box-shadow:12px 12px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   z-index: 30;
 }
@@ -302,50 +438,32 @@ a:hover {
 
 /* Card Project */
 .card-content {
+  box-sizing: border-box;
   padding: 0px;
   overflow: auto;
   height: 100%;
-  color: black;
+  color: var(--body-text-color);
   background-color: #fff;
   z-index: 30;
-  outline: 0.2rem solid black;
+  /* outline: 0.2rem solid rgb(48, 48, 48); */
   scrollbar-width: thin;          /* "auto" or "thin" /Works on Firefox only */
   scrollbar-color: rgb(7, 7, 7) rgb(69, 68, 68);   /* scroll thumb and track /Works on Firefox only*/ 
 }
-/* 
-Works on Chrome, Edge, and Safari
-.card-content::-webkit-scrollbar {
-  width: 0.6rem;
-  overflow: auto;
-  height: 2em;
-  margin-right: 0;
-  right: 0;
-}
 
-.card-content::-webkit-scrollbar-track {
-  
-  border: 0.1rem solid black;
-}
-
-.card-content::-webkit-scrollbar-thumb {
-  
-  padding: 0.1rem;
-  border-radius: 0;
-  border: 0.1rem solid rgb(0, 0, 0);
-} */
 .card-content > * {
   transform: translateY(-35px);
   opacity: 0;
 }
+
 .card-content video {
-  width: 90%;
-  height: 60%;
-  background-color: #fff;
-  padding: 1rem;
-  margin: 0.8rem;
-  padding-top: 0;
+  max-width: 100%; /* Prevents horizontal overflow */
+  max-height: 100%; /* Ensures the video height doesn't exceed the container */
+  width: 100%; /* Fills the container horizontally */
+  height: auto; /* Maintains aspect ratio */
+  display: block;
   animation: slideDown 0.5s ease-out 0.2s forwards;
 }
+
 .card-content img {
   width: 100%;
   height: 70%;
@@ -354,32 +472,38 @@ Works on Chrome, Edge, and Safari
   animation: slideDown 0.5s ease-out 0.2s forwards;
 }
 .card-content .header{
-  position: sticky;
-  position: -webkit-sticky;
+  /* position: sticky; */
+  /* position: -webkit-sticky; */
   background-color: #fff;
   top: 0em;
   padding: 1em;
   animation: slideDown 0.5s ease-out forwards;
   z-index: 3;
+  /* border-bottom: 1px solid black; */
+  
 }
 .card-content .header h1 {
   font-size: 26px;
   margin: 0.1em;
   font-weight: 600;
+  font-family: "Barlow", serif;
+  color: var(--title-text-color);
 }
 .card-content .header h2 {
   font-size: 20px;
-  margin: 0.8em;
+  margin-top: 0.8em;
   margin-bottom: 0;
   font-weight: 400;
+  color: var(--subtitle-text-color);
 }
 .card-content .wrapper{
   display: flex;
   flex-flow: row wrap;
   opacity: 100%;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  /* overflow: scroll; */
 }
-.wrapper .info {
+.info {
   display: flex;
   flex-flow: column wrap;
   opacity: 100%;
@@ -390,10 +514,16 @@ Works on Chrome, Edge, and Safari
   text-align: left;
   overflow-wrap: break-word;
   margin: 0;
-  
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
 }
-.wrapper .dec {
-  width: 50%;
+.dec {
+  width: 70%;
+  /* overflow-y: scroll; */
+  padding: 1.5rem;
+  padding-bottom: 0;
+  text-align: justify;
 }
 .wrapper h3 {
   font-size: 16px;
