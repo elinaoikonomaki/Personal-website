@@ -68,8 +68,60 @@
     "bwImg":"/assets/img/phases_comp_bw.jpg",
     "year":"2022",
     "hasVideo": false
-
-  }
+    },
+    { "name": "Urban Transformations in Istanbul : The Fener-Balat Grammar",
+    "subtitle":"Diploma Thesis | National Technical University of Athens",
+    "type":["Computational Design"],
+    "tags": ["Shape grammars","Python", "Grasshopper 3D","Cartography"],
+    "description": "The suburbs Fener and Balat in Istanbul, Turkey are part of the greater metropolitan district of the city. Since 1887, Fener and Balat have gone through a series of dynamic urban transformations not resulting from methodical planning. ",
+    "img":"/assets/istanbul_thesis/p0.jpg",
+    "year":"2018",
+    "hasVideo": false,
+    "blogItems": [
+      {"imgUrl": "/assets/istanbul_thesis/p1.jpg"}, 
+      {"imgUrl": "/assets/istanbul_thesis/p2.jpg"},
+      {"imgUrl": "/assets/istanbul_thesis/p3.jpg"}, 
+      {"imgUrl": "/assets/istanbul_thesis/p4.jpg"}, 
+      {"imgUrl": "/assets/istanbul_thesis/p5.jpg"}, 
+      {"imgUrl": "/assets/istanbul_thesis/p6.jpg"},
+      {"imgUrl": "/assets/istanbul_thesis/p7.jpg"},
+      {"imgUrl": "/assets/istanbul_thesis/p8.jpg"},
+      {"imgUrl": "/assets/istanbul_thesis/p9.jpg"},
+      {"imgUrl": "/assets/istanbul_thesis/p10.jpg"},
+      {"imgUrl": "/assets/istanbul_thesis/p11.jpg"}
+      ]
+    },
+    { "name": "School of Unknownables",
+    "subtitle":"Istanbul Design Biennal",
+    "type":["Exhibition", "Workshop"],
+    "tags": ["Exhibition","Art & Design", "Mapping"],
+    "team": ["Alpcan Hastürk", " Arda Koray", " Aslıhan Şenel", " Aylin Vartanyan", " Ayşe Şirin Çakmakçı",
+    " Beste Soybilge", " Buse Özçelik", " Cemil Çalkıcı",
+    " Charlotte Gambotti", " Derya Uzal", "Eda Hisarlıoğlu",
+    " Elif Hant", " Elif Tepekaya", " Elina Oikonomaki",
+    " Hilal Bozkurt", " Hilal Menlioğlu", " İlknur Özer", " İpek Avanoğlu", " Joseph Morriseau", " Karolina Theleriti"," Metehan Gürsu", " Nida Ekenel", " Seçil Yatan", " Susan Dunne", " Taylan Karabaş", " Tildem Kırtak", " Yağmur Çil", " Zeynep Çabuk"],
+    "description": "How do you know a place? What do you know of a place and through whom? What remains unknown? How does knowing and unknowing practices relate to owning, caring about, and sharing place? Our A School of Schools investigates what it means to ‘know’ a place, both as an individual and collectively, as a ‘professional’ and a ‘non-professional’, as an educator and a learner, and explores alternative educational practices in order to question the existing power structures, and sets out to stimulate more egalitarian relationships amongst the different agents of a place. Knowledge is often instrumentalized as a hegemonic device and suggests hierarchies between things like important and secondary, and consequently frames what is to be considered central and marginal. Our school aims to reframe the dominant knowledge of a place as one of the multiple knowledges of that place. We question the ‘well-known’ history and facts of a place and start by un-knowing and un-fixing the established information about a place and search for the lesser- known stories and experiences, that may be subtle or marginal, and most importantly we seek to acknowledge the unrevealed layers of ‘other knowledges’. It is about accepting our own social positions and the limits of our knowledge and facing the fact that we can only ascertain certain things about a place and that the major part will always remain unknowable. Today, more and more, we are faced with highly institutionalized educational environments, where educators and learners are assessed by quantitative rather than qualitative criteria. This kind of approach results in more isolated educational practices in design schools, which lose touch with the socio-cultural context. Extensive production over a short period of time is required by the new world order, mass production and consumption cycles rule. As a consequence, designers in practice and education alike are detached from the site, the users and the inhabitants; merely superficial authoritative knowledge is believed to be sufficient when deciding about the future of a place. The school of unknowables aims to step back from the all-knowing stance, and rather develop sensitive and multiple relationships with place, inhabitants and stories, weaving fine threads across the subtle urban fabrics.",
+    "img":"/assets/exhibition/unknowablesmap_web.jpg",
+    "year":"2018",
+    "hasVideo": false,
+    "blogItems": [
+      {"imgUrl":"/assets/exhibition/p14_1.jpg"},
+      {"imgUrl":"/assets/exhibition/p14_2.jpg"}
+      ]
+    },
+    { "name": "Exploring Data Visually",
+    "subtitle":"Sketching Visualizations for Diverse Audiences",
+    "type":["Teaching", "Workshop"],
+    "tags": ["Information Design","Data Visualization", "Sketching"],
+    "description": "I was invited to teach a workshop on Exploratory Visual Analysis in the Information Design Studio I, which is a studio required for first-year master's student in the Information Design and Data Visualization program at Northeastern University. The workshop consisted of two parts to sequentially build on skills developed and practiced from the first to the last session. The workshop focused on the creative, iterative process of visual data exploration, emphasizing the reasoning behind design decisions and the role of the audience in this process. These skills are integral to the data visualization practice but are often overlooked in favor of creating polished designs. As an outcome, students practiced skills in creative critical thinking, tailored their designs to target audiences, and learned to conduct research through visual exploration.",
+    "img":"/assets/teaching/workshop_main.jpg",
+    "year":"2024",
+    "hasVideo": false,
+    "blogItems": [
+      { "markdownFile": "/assets/teaching/workshop.md" },
+      {"imgUrl":"/assets/teaching/workshop1.jpg"}
+      ]
+    }
     
  ]
 }
