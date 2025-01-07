@@ -1,6 +1,9 @@
 import { createPar, createH4 } from "./selectors.js";
 import {onCardClick} from "./expandableCard.js";
 import { recalcWidths } from "./script.js";
+import MarkdownIt from 'markdown-it';
+
+const md = new MarkdownIt();
 
 export class Card {
     constructor(
@@ -12,6 +15,7 @@ export class Card {
         tags,
         types,
         year,
+        team,
         subtitle,
         paragraph,
         videoUrl,
@@ -27,6 +31,7 @@ export class Card {
       this.tags = tags;
       this.types = types;
       this.year = year;
+      this.team = team;
       this.subtitle = subtitle;
       this.paragraph = paragraph;
       this.videoUrl = `${videoUrl}`;
@@ -65,46 +70,77 @@ export class Card {
   }
 
   createCardContent() {
-    // Build your HTML snippet (like you did in getCardContent)
-    const blogContent = Array.isArray(this.blogItems) && this.blogItems.length > 0
-      ? this.blogItems.map(
-          (b) => `
-            <p>${b.text}</p>
-            <img src="${b.imgUrl}" alt="Blog Image">
-          `
-        ).join('')
-      : '';
+    // Build the HTML content for each project 
+    const blogContentContainer = document.createElement('div');
+    blogContentContainer.className = 'blog-content';
+
+    if (Array.isArray(this.blogItems) && this.blogItems.length > 0) {
+        this.blogItems.forEach((item) => {
+            if (item.markdownFile) {
+                // Fetch Markdown and convert to HTML
+                fetch(item.markdownFile)
+                    .then((response) => response.text())
+                    .then((markdownContent) => {
+                        const htmlContent = md.render(markdownContent);
+                        const blogItemDiv = document.createElement('div');
+                        blogItemDiv.innerHTML = htmlContent;
+                        blogContentContainer.appendChild(blogItemDiv);
+                    })
+                    .catch((error) => console.error(`Error loading Markdown file: ${error}`));
+            } else if (item.text && item.imgUrl) {
+                // Render blog item with both text and image
+                const blogItemDiv = document.createElement('div');
+                blogItemDiv.innerHTML = `
+                    <p>${item.text}</p>
+                    <img class="blog_img" src="${item.imgUrl}" alt="Blog Image">
+                `;
+                blogContentContainer.appendChild(blogItemDiv);
+            } else if (item.imgUrl) {
+                // Render blog item with just an image
+                const blogItemDiv = document.createElement('div');
+                blogItemDiv.innerHTML = `
+                    <img class="blog_img" src="${item.imgUrl}" alt="Blog Image">
+                `;
+                blogContentContainer.appendChild(blogItemDiv);
+            }
+        });
+    } else {
+        // Default content for projects without blog items
+        const defaultMessage = document.createElement('p');
+        defaultMessage.textContent = "";
+        blogContentContainer.appendChild(defaultMessage);
+    }
 
     const previewContent = this.hasVideo
-      ? `<video muted controls><source src="${this.videoUrl}" type="video/mp4"></video>`
-      : `<img src="${this.imgUrl}" alt="Preview">`;
+        ? `<video muted controls><source src="${this.videoUrl}" type="video/mp4"></video>`
+        : `<img class="blog_img" src="${this.imgUrl}" alt="Preview">`;
 
     // Create wrapper element
     const contentDiv = document.createElement('div');
     contentDiv.className = 'card-content';
-    // By default, let it be hidden in CSS, or do inline style:
-    // contentDiv.style.display = 'none';
-
     contentDiv.innerHTML = `
-      <div class="header">
-        <h1>${this.title}</h1>
-        <h2>${this.subtitle}</h2>
-      </div>
-      ${previewContent}
-      <div class="wrapper">
-        <div class="info">
-          <h3> Keywords </h3>
-          <p>${this.tags.concat(this.types).join(', ')}</p>
-          <h3> Year </h3>
-          <p>${this.year}</p>
+        <div class="header">
+            <h1>${this.title}</h1>
+            <h2>${this.subtitle}</h2>
         </div>
-        <div class="dec">
-          <h3> Short Description </h3>
-          <p>${this.paragraph}</p>
-          ${blogContent}
+        ${previewContent}
+        <div class="wrapper">
+            <div class="info">
+                <h3>Keywords</h3>
+                <p>${this.tags.concat(this.types).join(', ')}</p>
+                <h3>Year</h3>
+                <p>${this.year}</p>
+                <h3>Team</h3>
+                <p>${this.team}</p>
+            </div>
+            <div class="dec">
+                <h3>About</h3>
+                <p>${this.paragraph}</p>
+            </div>
         </div>
-      </div>
     `;
+
+    contentDiv.appendChild(blogContentContainer);
 
     // Append to the card div
     this.div.appendChild(contentDiv);

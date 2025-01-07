@@ -48,6 +48,7 @@ function initializeCards(projects) {
       project.tags,
       project.type,
       project.year,
+      project.team,
       project.subtitle,
       project.description,
       project.video,

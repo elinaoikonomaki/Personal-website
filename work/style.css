@@ -532,7 +532,48 @@ a:hover {
   padding: 1.5rem;
   padding-bottom: 0;
   text-align: justify;
+  object-fit: contain;
 }
+
+.blog_img {
+  object-fit: contain;
+}
+
+.blog-content {
+  color: var(--body-text-color);
+  font-family: "IBM Plex Sans", serif;
+  z-index: 4;
+  opacity: 1;
+  padding: 3rem;
+  text-align: justify;
+}
+
+.blog-content h1, .blog-content h2, .blog-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--body-text-color);
+  font-family: "IBM Plex Sans", serif;
+}
+
+.blog-content ul {
+  margin-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.blog-content strong {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.blog-content em {
+  font-style: italic;
+}
+
 .wrapper h3 {
   font-size: 16px;
   font-style: normal;
