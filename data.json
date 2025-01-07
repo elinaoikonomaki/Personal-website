@@ -1,5 +1,23 @@
 {
  "projects":[
+  { "name": "Reducing Visual Complexity in Multivariate Geographic Data Using Sentence Embedding Clustering",
+    "subtitle":"Mobi.AI | A Visualization Tool for Data Scientists, and Researchers to evaluate the quality of the recommendation and planning systems.",
+    "type":["Data Visualization", "Full-Stack", "Machine Learning"],
+    "tags": ["Multivariate Visualization","High-dimensional data", "Interface"],
+    "description": "Visualizing high-dimensional geographic data with associated unstructured textual and quantitative attributes, such as Points of Interest (POIs), is challenging. Through a formative user survey and collaborative sessions with data scientists and engineers, we identified key challenges in the analytical and exploratory tasks of such datasets, including the detection of patterns and outliers at a global scale and the characterization of distribution and correlation across regions. To address these challenges, this paper introduces a system that integrates dynamic clustering of sentence embedding vectors with hierarchical H3 binning to reduce visual complexity and enable effective data exploration and analysis. Unstructured text tags are transformed into sentence vector embeddings using GPT-3 and BERT language models to dynamically generate meaningful clusters for effective color encodings. We employ established techniques of color weaving and color blending to generate multivariate geographic visualizations and compare the results. Additionally, to support the exploration and characterization of distributions, the interface integrates a tag-query input, a table view, a barplot view, and a level of detail (LOD) for a granular view of H3 bins. We evaluated the interface through a preliminary study highlighting its potential for supporting analytical and exploratory tasks in multivariate visualizations. Our findings demonstrate the systems' efficiency and scalability for real-time visualization applications using high-dimensional geographic data with unstructured textual and quantitative attributes.",
+    "img":"/assets/mobi_clippy/overview.jpg",
+    "year":"2024",
+    "team": ["Elina Oikonomaki", " Simon Fang", " Peng Yu"],
+    "hasVideo": false,
+    "blogItems": [
+      {"imgUrl": "/assets/mobi_clippy/initial_screen.jpg"}, 
+      {"imgUrl": "/assets/mobi_clippy/overview.jpg"},
+      {"imgUrl": "/assets/mobi_clippy/data_sample.jpg"},  
+      {"imgUrl": "/assets/mobi_clippy/clustering.jpg"},
+      {"imgUrl": "/assets/mobi_clippy/h3.jpg"},
+      {"imgUrl": "/assets/mobi_clippy/small_multiples.jpg"}
+      ]
+    },
   { "name": "Travel Allocation of Multiple Student Groups in Paris",
         "subtitle":"A prototype interface for visualizing how Mobi's algorithm builds itineraries for groups of students in Paris.",
         "type":[ "Data Visualization"],
