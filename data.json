@@ -2,8 +2,8 @@
  "projects":[
   { "name": "Sublime Ordinary: Visualizing an Archive of Soundscapes",
   "subtitle":"Presented on 7th Workshop on Visualization for Communication, IEEE VIS 2025 & NEURIPS Creative AI Track 2025",
-  "type":["Data Visualization", "Full-Stack", "Urban Computing", "Machine Learning"],
-  "tags": ["Multi-modal Visualization","Urban Computing", "Accessibility"],
+  "type":["Data Visualization", "Full-Stack", "Machine Learning", "Exhibition"],
+  "tags": ["Multi-modal Visualization", "Accessibility", "Urban Computing" ],
   "description": "The Sublime Ordinary is a web-based audiovisual interface that uses sound as a medium for communicating temporal urban change to the public. Drawing from an archive of recordings captured in Harvard Square during the COVID-19 pandemic, the project com- bines geospatial and time-based visualizations with AI-labeled au- dio to explore a new way of communicating the impacts of urban policy through the coupling of visual and auditory cues.",
   "video":"/assets/video/Neurips_Final_Revision_compressed.mp4",
   "year":"2025",
