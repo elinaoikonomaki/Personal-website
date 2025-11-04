@@ -227,12 +227,12 @@ a:hover {
   font-size: 0.9rem;
   color: var(--filters-default);
   background-color: transparent;
-  padding: 0.3rem; /* Maintain consistent padding */
+  padding: 0.2rem; /* Maintain consistent padding */
   border-radius: 0.5rem;
   margin: 0.3rem;
   cursor: pointer;
   transition: color 0.3s, box-shadow 0.3s; /* Smooth transition for color and box-shadow */
-  box-shadow: 0 0 0 0.08rem  #9497b682; /* Initial box-shadow as outline */
+  
 }
 .type-chip:hover {
   color: var(--filters-selected);
