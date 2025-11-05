@@ -315,6 +315,32 @@ li > strong {
   .about>img {
     width: 40%;
   }
+  
+  /* Make column-left content horizontal on mobile */
+  .about .column-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    margin: 10px;
+  }
+  
+  .about .column-left img {
+    width: 40%;
+    flex-shrink: 0;
+  }
+  
+  #links {
+    position: relative;
+    flex: 1;
+    margin: 0.4rem;
+    margin-top: 0;
+  }
+  #links p {
+    font-size: 0.9rem;
+  }
+  
   .text-content {
     width: 80%;
     padding-top: 2px;
@@ -327,13 +353,6 @@ li > strong {
   }
   .displaybar > p {
     font-size: 0.7rem;
-  }
-  #links {
-    position: relative;
-    margin: 0.4rem;
-  }
-  #links p {
-    font-size: 0.9rem;
   }
   .logos{
     width: auto;

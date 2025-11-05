@@ -680,12 +680,35 @@ a:hover {
     height:100%; 
     width:100%;
     flex-basis:auto;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
+    overflow-y: auto;
+    overflow-x: hidden;
     order: 6;
+    align-items: stretch;
   }
-  .card {
-    width: 100%;
-    height: 5%;
+  .panel {
+    width: 100% !important;
+    min-height: 50px;
+    flex-shrink: 0;
+  }
+  
+  /* Make unexpanded card titles take full width on mobile */
+  .panel:not(.expanded) h4 {
+    position: relative !important;
+    transform: none !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Expanded card takes full height and width */
+  .panel.expanded {
+    width: 100% !important;
+    flex-grow: 1;
+    flex-basis: auto;
   }
   
   .item-1{ 
@@ -740,6 +763,31 @@ a:hover {
   }
   .card-content::-webkit-scrollbar-thumb {
       border: 0.1rem solid rgb(163, 160, 160);
+  }
+  
+  /* Stack wrapper content vertically on mobile */
+  .card-content .wrapper {
+    flex-flow: column nowrap;
+  }
+  
+  /* Make info section full width on mobile */
+  .info {
+    width: 100% !important;
+    position: relative !important;
+    padding: 1rem;
+    padding-bottom: 0;
+  }
+  
+  /* Make description section full width on mobile */
+  .dec {
+    width: 100% !important;
+    padding: 1rem;
+    padding-bottom: 0;
+  }
+  
+  /* Remove padding from blog-content on mobile */
+  .blog-content {
+    padding: 0;
   }
 }
 

@@ -14,6 +14,11 @@ window.addEventListener("load", () => {
   fetchData();
 });
 
+// Recalculate widths on window resize (for responsive behavior)
+window.addEventListener("resize", () => {
+  recalcWidths();
+});
+
 async function fetchData() {
   const response = await fetch('../data.json');
   const data = await response.json();
@@ -217,6 +222,9 @@ export function recalcWidths() {
 
   if (visiblePanels.length === 0) return;
 
+  // Check if we're on mobile (screen width <= 700px)
+  const isMobile = window.innerWidth <= 700;
+
   // Which is expanded?
   let expandedPanel = visiblePanels.find(p => p.classList.contains("expanded"));
   if (!expandedPanel) {
@@ -227,22 +235,46 @@ export function recalcWidths() {
   // Figure out widths: expanded vs. non-expanded
   const nonExpandedPanels = visiblePanels.filter(p => p !== expandedPanel);
 
-  // leftover = 100% - (#nonExpanded * MIN_WIDTH)
-  const leftoverWidth = 100 - (nonExpandedPanels.length * MIN_WIDTH);
-  const expandedWidth = Math.max(0, leftoverWidth);
+  if (isMobile) {
+    // For mobile: use fixed pixel heights for vertical stacking
+    const nonExpandedHeight = 50; // Shorter height for collapsed panels
+    
+    nonExpandedPanels.forEach(p => {
+      p.style.flexBasis = `${nonExpandedHeight}px`;
+      p.style.height = `${nonExpandedHeight}px`;
+      p.style.width = '100%';
+      p.style.flexGrow = 0;
+      p.style.flexShrink = 0;
+      p.style.opacity = "1";
+    });
+    
+    // Expanded card takes full remaining height and width
+    expandedPanel.style.flexBasis = 'auto';
+    expandedPanel.style.height = '';
+    expandedPanel.style.width = '100%';
+    expandedPanel.style.flexGrow = 1; // Fill remaining space
+    expandedPanel.style.flexShrink = 0;
+    expandedPanel.style.opacity = "1";
+  } else {
+    // For desktop: use percentage widths
+    const leftoverWidth = 100 - (nonExpandedPanels.length * MIN_WIDTH);
+    const expandedWidth = Math.max(0, leftoverWidth);
 
-  // Assign widths
-  nonExpandedPanels.forEach(p => {
-    p.style.flexBasis = `${MIN_WIDTH}%`;
-    p.style.flexGrow = 0;
-    p.style.flexShrink = 0;
-    p.style.opacity = "1";
-  });
-  
-  expandedPanel.style.flexBasis = `${expandedWidth}%`;
-  expandedPanel.style.flexGrow = 0;
-  expandedPanel.style.flexShrink = 0;
-  expandedPanel.style.opacity = "1";
+    // Assign widths
+    nonExpandedPanels.forEach(p => {
+      p.style.flexBasis = `${MIN_WIDTH}%`;
+      p.style.width = '';
+      p.style.flexGrow = 0;
+      p.style.flexShrink = 0;
+      p.style.opacity = "1";
+    });
+    
+    expandedPanel.style.flexBasis = `${expandedWidth}%`;
+    expandedPanel.style.width = '';
+    expandedPanel.style.flexGrow = 0;
+    expandedPanel.style.flexShrink = 0;
+    expandedPanel.style.opacity = "1";
+  }
 
   // For hidden panels => collapse
   panels.forEach(p => {
